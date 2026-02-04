@@ -17,7 +17,6 @@
           ▼
 ┌────────────────────┐
 │  Save markdown     │
-│   with metadata    │
 └─────────┬──────────┘
           │
           ▼
@@ -41,7 +40,7 @@ output:
 
 ## Step 2: Save File
 
-Формат имени файла: `{date}-{slug}.md`
+Формат имени: `{date}-{slug}.md`
 
 Пример: `2026-01-20-my-first-post.md`
 
@@ -52,17 +51,16 @@ output:
 ## Step 3: Confirm
 
 Сообщи пользователю:
-- Путь к сохранённому файлу
+- Путь к файлу
 - Размер в словах
-- Напомни про git commit если нужно
+- Следующие шаги (git commit если нужно)
 
-## Пример
+## Пример вывода
 
 ```
 Статья сохранена: output/posts/2026-01-20-my-first-post.md
 Размер: 847 слов
 
 Следующие шаги:
-- Проверь статью: cat output/posts/2026-01-20-my-first-post.md
-- Закоммить: git add output/ && git commit -m "feat(blog): add my-first-post"
+- git add output/ && git commit -m "feat(blog): add post"
 ```

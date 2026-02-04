@@ -1,0 +1,1 @@
+../../rules/writing-guide.md

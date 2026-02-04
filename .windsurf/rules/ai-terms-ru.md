@@ -1,0 +1,1 @@
+../../rules/ai-terms-ru.md

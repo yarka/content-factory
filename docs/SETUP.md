@@ -2,20 +2,14 @@
 
 ## Требования
 
-- Claude Code (или другой AI-агент с поддержкой skills)
+- AI-агент: Claude Code, Cursor, Windsurf, Copilot, или другой
 - Git
 
-## Шаг 1: Создай репозиторий
+## Шаг 1: Клонируй репозиторий
 
 ```bash
-# Через GitHub CLI
-gh repo create my-blog-pipeline --template serejaris/blog-pipeline-template
-cd my-blog-pipeline
-
-# Или вручную
 git clone https://github.com/serejaris/blog-pipeline-template my-blog-pipeline
 cd my-blog-pipeline
-rm -rf .git && git init
 ```
 
 ## Шаг 2: Настрой конфиг
@@ -37,7 +31,31 @@ content:
   language: ru
 ```
 
-## Шаг 3: Для Telegram (опционально)
+## Шаг 3: Открой в своём инструменте
+
+### Claude Code
+
+```bash
+cd my-blog-pipeline
+claude
+# "напиши статью про X"
+```
+
+Claude Code автоматически прочитает `CLAUDE.md`.
+
+### Cursor
+
+Открой папку в Cursor — он автоматически прочитает `.cursor/rules/*.mdc`.
+
+### Windsurf
+
+Открой папку в Windsurf — он автоматически прочитает `.windsurf/rules/*.md`.
+
+### Другие инструменты
+
+Любой инструмент, поддерживающий `AGENTS.md`, прочитает его (symlink на `CLAUDE.md`).
+
+## Шаг 4: Для Telegram (опционально)
 
 1. Создай бота через [@BotFather](https://t.me/BotFather)
 2. Добавь бота админом в канал
@@ -54,54 +72,51 @@ telegram:
   timezone: "Europe/Moscow"
 ```
 
-**Секреты:** Используй переменные окружения вместо токенов в файле:
-
-```yaml
-bot_token: ${TELEGRAM_BOT_TOKEN}
-```
-
-```bash
-export TELEGRAM_BOT_TOKEN="your-token"
-```
-
-## Шаг 4: Проверь работу
-
-В Claude Code:
-
-```
-напиши статью про автоматизацию публикаций
-```
-
-Агент должен:
-1. Задать уточняющие вопросы
-2. Провести research
-3. Написать черновик
-4. Прогнать через деаификацию
-5. Сохранить/опубликовать через выбранный adapter
-
-## Структура папок после установки
+## Структура после установки
 
 ```
 my-blog-pipeline/
+├── CLAUDE.md                   # Entry point
+├── AGENTS.md → CLAUDE.md       # Universal (symlink)
+│
+├── rules/                      # Canonical source
+│   ├── blog-post.md
+│   ├── deaify-text.md
+│   └── ...
+│
+├── .cursor/rules/              # Cursor symlinks
+├── .windsurf/rules/            # Windsurf symlinks
+│
 ├── config/
 │   ├── config.example.yaml
-│   └── config.yaml          ← твой конфиг (gitignored)
-├── output/
-│   └── posts/               ← сюда сохраняются статьи
-├── skills/
-│   └── ...
-└── CLAUDE.md                ← symlink на skill.md
+│   └── config.yaml             # ← твой конфиг (gitignored)
+│
+└── output/posts/               # ← сюда сохраняются статьи
 ```
 
 ## Troubleshooting
 
-### Skill не находится
+### Symlinks не работают (Windows)
 
-Проверь что `CLAUDE.md` в корне репозитория:
+На Windows symlinks могут не работать. Скопируй файлы вручную:
 
 ```bash
-ls -la CLAUDE.md
-# Должен быть symlink на skills/blog-post/skill.md
+# Для Cursor
+cp rules/*.md .cursor/rules/
+# Переименуй в .mdc если нужно
+
+# Для Windsurf
+cp rules/*.md .windsurf/rules/
+```
+
+### Правила не подхватываются
+
+Проверь что файлы на месте:
+
+```bash
+ls -la CLAUDE.md AGENTS.md
+ls -la rules/
+ls -la .cursor/rules/ .windsurf/rules/
 ```
 
 ### Telegram не отправляет
@@ -109,10 +124,3 @@ ls -la CLAUDE.md
 1. Проверь что бот — админ канала
 2. Проверь токен: `curl "https://api.telegram.org/bot{TOKEN}/getMe"`
 3. Проверь channel_id: для публичных — `@username`, для приватных — числовой ID
-
-### Config не читается
-
-```bash
-# Проверь YAML синтаксис
-python3 -c "import yaml; yaml.safe_load(open('config/config.yaml'))"
-```

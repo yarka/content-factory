@@ -1,0 +1,1 @@
+../../rules/deaify-text.md

@@ -1,0 +1,1 @@
+../../rules/blog-post.md

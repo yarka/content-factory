@@ -1,0 +1,1 @@
+skills/blog-post/skill.md

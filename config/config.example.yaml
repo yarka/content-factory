@@ -1,0 +1,52 @@
+# Blog Pipeline Configuration
+# Copy to config.yaml and fill in your values
+
+# Output settings
+output:
+  # Which adapter to use: telegram | file-only | custom
+  adapter: file-only
+
+  # For file-only adapter: where to save posts
+  output_dir: output/posts
+
+# Telegram settings (for telegram adapter)
+telegram:
+  # Bot token from @BotFather
+  bot_token: ${TELEGRAM_BOT_TOKEN}
+
+  # Channel ID or username (e.g., "@mychannel" or "-1001234567890")
+  channel_id: "@mychannel"
+
+  # Time to publish posts (24h format)
+  schedule_time: "19:00"
+
+  # Timezone for scheduling
+  timezone: "Europe/Moscow"
+
+# Content requirements
+content:
+  # Minimum word count for posts
+  min_words: 600
+
+  # Require ASCII diagram in every post
+  require_diagram: true
+
+  # Primary language for posts
+  language: ru
+
+# SEO limits
+seo:
+  # Maximum title length
+  max_title_length: 60
+
+  # Maximum description length
+  max_description_length: 160
+
+# Blog settings (for URL generation)
+blog:
+  # Base URL for your blog
+  base_url: https://example.com
+
+  # URL pattern for posts
+  # Available placeholders: {slug}, {date}, {year}, {month}
+  post_pattern: /blog/{slug}

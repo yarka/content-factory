@@ -20,7 +20,7 @@ Questions → Research → Write → Deaify → Publish
 
 ```bash
 # 1. Клонируй template
-gh repo create my-blog-pipeline --template sereja-ris/blog-pipeline-template
+gh repo create my-blog-pipeline --template serejaris/blog-pipeline-template
 cd my-blog-pipeline
 
 # 2. Настрой конфиг

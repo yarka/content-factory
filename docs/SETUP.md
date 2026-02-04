@@ -9,11 +9,11 @@
 
 ```bash
 # Через GitHub CLI
-gh repo create my-blog-pipeline --template sereja-ris/blog-pipeline-template
+gh repo create my-blog-pipeline --template serejaris/blog-pipeline-template
 cd my-blog-pipeline
 
 # Или вручную
-git clone https://github.com/sereja-ris/blog-pipeline-template my-blog-pipeline
+git clone https://github.com/serejaris/blog-pipeline-template my-blog-pipeline
 cd my-blog-pipeline
 rm -rf .git && git init
 ```

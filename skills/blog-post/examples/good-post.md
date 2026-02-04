@@ -62,4 +62,4 @@ tags: ["claude-code", "автоматизация", "блог"]
 
 Pipeline модульный. Можно добавить фазу review перед публикацией. Или заменить Telegram на Ghost/Notion. Или убрать research если пишешь из личного опыта.
 
-Код открыт: [blog-pipeline-template](https://github.com/sereja-ris/blog-pipeline-template)
+Код открыт: [blog-pipeline-template](https://github.com/serejaris/blog-pipeline-template)

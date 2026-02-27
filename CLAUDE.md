@@ -1,49 +1,96 @@
-# Blog Post Pipeline
+# Контент-завод
 
-Модульный pipeline для написания статей через AI-агентов.
+Персональный AI-пайплайн для создания аутентичного контента.
 
 ```
-Questions → Research → Write → Deaify → Publish
+Идея → Core Pipeline → Adapter → Publish
 ```
+
+---
+
+## Как использовать
+
+**Первый запуск:**
+> "запусти setup" — онбординг, заполняет channel-dna.md
+
+**Написать пост:**
+> Просто скажи идею → pipeline запустится сам
+
+**Только deaify:**
+> "деаишь этот текст: ..."
+
+---
+
+## Архитектура
+
+```
+         channel-dna.md
+         writing-guide.md
+               │
+               ▼
+     ┌─────────────────────┐
+     │    Core Pipeline    │
+     │  Questions          │
+     │  Research           │  ← Авто (Exa) или референсы
+     │  Write              │  ← Заголовок + core draft
+     │  Fact-check         │  ← Exa MCP / WebFetch
+     │  Deaify             │  ← 4 параллельных критика
+     └──────────┬──────────┘
+                │
+     ┌──────────▼──────────┐
+     │   Выбор адаптера    │
+     └──┬────────┬────┬────┘
+        │        │         │
+        ▼        ▼         ▼
+   Telegram  LinkedIn   Threads
+   RU, HTML  EN, plain  RU, 500
+   до 1500   до 3000    символов
+```
+
+**Ядро одно. Адаптеры разные.**
+
+---
 
 ## Skills
 
-| Skill | File | Trigger |
-|-------|------|---------|
-| **blog-post** | `rules/blog-post.md` | "напиши статью", "блог", "пост" |
-| **deaify-text** | `rules/deaify-text.md` | "убери аишность", "деаишь", "humanize" |
-| **publish** | `rules/publish/publish.md` | "опубликуй", "publish" |
+| Trigger | Файл | Что делает |
+|---------|------|------------|
+| "setup", "настрой канал" | `rules/setup.md` | Онбординг основного канала |
+| "настрой linkedin", "setup linkedin" | `rules/setup.md` → Platform Setup | Онбординг LinkedIn DNA |
+| "настрой threads", "setup threads" | `rules/setup.md` → Platform Setup | Онбординг Threads DNA |
+| идея для поста, "напиши пост" | `rules/core-pipeline.md` | Полный pipeline |
+| "в телеграм", "telegram" | `rules/adapters/telegram.md` | Telegram адаптер |
+| "в linkedin" | `rules/adapters/linkedin.md` | LinkedIn адаптер (читает channel-dna-linkedin.md) |
+| "в threads" | `rules/adapters/threads.md` | Threads адаптер (короткий) |
+| "деаишь", "humanize" | `rules/deaify-text.md` | Только deaify |
+| "напиши статью", длинный формат | `rules/blog-post.md` | Оригинальный pipeline |
 
-## Quick Start
+---
 
-Для написания статьи прочитай `rules/blog-post.md` и следуй 5-фазному workflow:
+## Файлы
 
-1. **Questions** — угол, аудитория, takeaway
-2. **Research** — web search, 3+ источников
-3. **Write** — черновик 600+ слов
-4. **Deaify** — 4 критика убирают AI-отпечатки
-5. **Publish** — adapter из config
+| Файл | Назначение |
+|------|------------|
+| `channel-dna.md` | ДНК основного канала (Telegram) |
+| `channel-dna-linkedin.md` | ДНК LinkedIn — цель, язык, голос, референсы |
+| `channel-dna-{platform}.md` | ДНК для каждой новой платформы |
+| `rules/writing-guide.md` | Стиль и голос автора |
+| `rules/core-pipeline.md` | Основной pipeline |
+| `rules/fact-check.md` | Проверка фактов |
+| `rules/deaify-text.md` | 4 параллельных критика |
+| `rules/adapters/telegram.md` | Telegram: HTML, RU, до 1500 |
+| `rules/adapters/linkedin.md` | LinkedIn: plain text, EN, до 3000 |
+| `rules/adapters/threads.md` | Threads: plain text, до 500 |
+| `rules/setup.md` | Онбординг |
+| `publish.py` | Публикация (staging/production) |
+| `config/config.yaml` | Токены и окружения |
+| `output/posts/` | Готовые черновики |
 
-## Supporting Files
+---
 
-| File | Purpose |
-|------|---------|
-| `rules/writing-guide.md` | Стиль, хуки, ритм |
-| `rules/ai-terms-ru.md` | AI терминология на русском |
-| `rules/publish/adapters/` | Telegram, file-only, custom |
-| `config/config.yaml` | Настройки output adapter |
+## Правила
 
-## Config
-
-Скопируй `config/config.example.yaml` → `config/config.yaml`:
-
-```yaml
-output:
-  adapter: file-only  # telegram | file-only | custom
-  output_dir: output/posts
-```
-
-## Reference
-
-- [Статья о пайплайне](https://sereja.tech/blog/blog-post-pipeline)
-- [AGENTS.md standard](https://agents.md)
+- Читай `channel-dna.md` перед каждым постом
+- Не выдумывай факты — спроси или оставь плейсхолдер
+- Deaify обязателен для каждого поста
+- Тире только короткие (–)

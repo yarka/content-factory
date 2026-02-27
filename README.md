@@ -1,110 +1,249 @@
-# Blog Pipeline
+# AI Content Factory
 
-Модульный pipeline для написания статей через AI-агентов.
-
-**Работает с:** Claude Code, Cursor, Windsurf, GitHub Copilot, Aider и другими.
+Персональная система создания аутентичного контента с AI.
+Не AI-слоп. Твой голос — через умные инструменты.
 
 ```
-Questions → Research → Write → Deaify → Publish
+Идея (1 мин) → Pipeline (10 мин) → Правки (5 мин) → Пост
 ```
+
+Работает для Telegram и LinkedIn. Готовится: Threads.
+
+---
+
+## 🚀 Быстрый старт (для участников воркшопа)
+
+### Что нужно заранее
+- Аккаунт на [GitHub](https://github.com) — для форка репо
+- Аккаунт на [claude.ai](https://claude.ai) (Pro) **или** [ChatGPT](https://chatgpt.com)
+- [Claude Code](https://claude.ai/code) — если хочешь работать через терминал
+
+### Шаг 1: Форкни этот репозиторий
+Нажми **Fork** в правом верхнем углу → получишь копию в своём GitHub-аккаунте.
+
+### Шаг 2: Клонируй к себе
+```bash
+git clone https://github.com/ТВОЙ_USERNAME/content-factory.git
+cd content-factory
+```
+
+### Шаг 3: Открой в Claude Code
+```bash
+claude
+```
+
+### Шаг 4: Запусти настройку
+```
+запусти setup
+```
+
+Claude задаст 6 вопросов → заполнит `channel-dna.md` и `rules/writing-guide.md` под твой голос.
+
+### Шаг 5: Напиши первый пост
+```
+хочу написать про [твоя идея]
+```
+
+Pipeline запустится сам.
+
+---
+
+> **Нет Claude Code?** Создай Project в [claude.ai](https://claude.ai) → загрузи файлы из папки `rules/` и оба `channel-dna*.md` → работай прямо в браузере.
+
+> **Используешь ChatGPT?** Создай Project → загрузи те же файлы → используй те же триггеры.
+
+---
 
 ## Что это
 
-5-фазный воркфлоу для создания блог-постов:
+Контент-завод — это не "попроси ChatGPT написать пост".
 
-1. **Questions** — уточняющие вопросы (угол, аудитория, takeaway)
-2. **Research** — поиск источников через web search
-3. **Write** — черновик 600+ слов с ASCII диаграммой
-4. **Deaify** — 4 параллельных критика убирают AI-отпечатки
-5. **Publish** — адаптер для Telegram, файла или своего сервиса
+Это система в три слоя:
 
-## Quick Start
+**1. Channel DNA** — один раз описываешь голос, аудиторию, рубрики.
+Система знает как ты пишешь. Не нужно объяснять каждый раз.
+
+**2. Core Pipeline** — платформо-независимое ядро:
+Questions → Research → Write → Fact-check → Deaify
+
+**3. Адаптеры** — каждая платформа получает свою версию из одного черновика:
+
+```
+         Channel DNA
+         Writing Guide
+               │
+               ▼
+     ┌─────────────────────┐
+     │    Core Pipeline    │
+     │  Questions          │
+     │  Research           │  ← Exa MCP или твои референсы
+     │  Write              │  ← 3 варианта хука + черновик
+     │  Fact-check         │  ← веб-поиск, флаги ✅⚠️❌
+     │  Deaify             │  ← 4 параллельных критика
+     └──────────┬──────────┘
+                │
+     ┌──────────▼──────────┐
+     │   Выбор адаптера    │
+     └──┬──────────────┬───┘
+        │              │
+        ▼              ▼
+   Telegram        LinkedIn
+   RU, HTML        EN, plain
+   до 1500         600-1200
+```
+
+**Ядро одно. Адаптеры разные.**
+
+---
+
+## Как запустить
+
+### Первый раз — настройка канала
+
+```
+"запусти setup"
+```
+
+Claude анализирует твой канал, задаёт 6 вопросов, заполняет `channel-dna.md` и `rules/writing-guide.md`.
+После — система знает твой голос.
+
+### Новая платформа — отдельный DNA
+
+```
+"настрой linkedin"
+"настрой threads"
+```
+
+Для каждой платформы свой онбординг: цель, язык, аудитория, референсы, голос.
+Создаёт `channel-dna-{platform}.md`.
+
+### Написать пост
+
+```
+"хочу написать про X"
+```
+
+Pipeline запускается сам. Задаст максимум 3 вопроса, всё остальное сделает.
+
+### Адаптировать под платформу
+
+```
+"в телеграм"
+"в linkedin"
+"в threads"
+```
+
+### Опубликовать в Telegram
 
 ```bash
-# 1. Клонируй
-git clone https://github.com/serejaris/blog-pipeline-template
-cd blog-pipeline-template
+# Тест
+python3 publish.py --file output/posts/дата-slug.md
 
-# 2. Настрой конфиг
-cp config/config.example.yaml config/config.yaml
-
-# 3. Открой в своём AI-инструменте и скажи:
-# "напиши статью про X"
+# Продакшн
+python3 publish.py --file output/posts/дата-slug.md --env production
 ```
 
-## Совместимость
+---
 
-| Tool | Entry Point | Rules Location |
-|------|-------------|----------------|
-| **Claude Code** | `CLAUDE.md` | `rules/` |
-| **Cursor** | `.cursor/rules/*.mdc` | symlinks → `rules/` |
-| **Windsurf** | `.windsurf/rules/*.md` | symlinks → `rules/` |
-| **Any AGENTS.md** | `AGENTS.md` | → symlink to `CLAUDE.md` |
+## Pipeline — детально
 
-Все инструменты читают один и тот же контент — `rules/` папка является canonical source.
+| Фаза | Что делает |
+|------|------------|
+| **Questions** | Уточняет идею, угол, контекст (макс. 3 вопроса) |
+| **Research** | Авто-поиск через Exa MCP или читает твои референсы |
+| **Write** | 3 варианта хука → выбираешь → пишет черновик в твоём голосе |
+| **Fact-check** | Проверяет каждый факт, флагает ✅⚠️❌❓ |
+| **Deaify** | 4 критика параллельно: клише, ритм, конкретность, факты |
+| **Adapter** | Форматирует под платформу: HTML/plain, длина, тон |
 
-## Структура
-
-```
-├── CLAUDE.md                   # Entry point (canonical)
-├── AGENTS.md → CLAUDE.md       # Universal standard (symlink)
-│
-├── rules/                      # 📁 CANONICAL SOURCE
-│   ├── blog-post.md           # Main 5-phase workflow
-│   ├── deaify-text.md         # 4 parallel critics
-│   ├── writing-guide.md       # Style, hooks, rhythm
-│   ├── ai-terms-ru.md         # AI terms glossary
-│   └── publish/
-│       ├── publish.md         # Adapter router
-│       └── adapters/
-│           ├── telegram.md
-│           ├── file-only.md
-│           └── custom.md
-│
-├── .cursor/rules/              # Cursor (symlinks)
-├── .windsurf/rules/            # Windsurf (symlinks)
-│
-├── config/
-│   └── config.example.yaml
-│
-└── docs/
-    ├── SETUP.md
-    ├── CUSTOMIZATION.md
-    └── ADAPTERS.md
-```
+---
 
 ## Адаптеры
 
-| Adapter | Что делает |
-|---------|------------|
-| `telegram` | Очередь + scheduler для Telegram канала |
-| `file-only` | Сохраняет markdown в папку |
-| `custom` | Шаблон для своего сервиса |
+### Telegram
+- Язык: русский
+- Формат: HTML (`<b>`, `<a href>`)
+- Длина: 200–1500 символов
+- Тире: только короткие (–)
+- Публикация: `publish.py`
 
-Выбор в `config/config.yaml`:
+### LinkedIn
+- Язык: английский
+- Формат: plain text
+- Длина: 600–1200 символов (ёмко, не растягивать)
+- Без хэштегов, без эмодзи
+- Мягкий CTA — вопрос или наблюдение
+- Голос: 80% бизнес-инсайт, 20% личная история
+- DNA: `channel-dna-linkedin.md`
 
-```yaml
-output:
-  adapter: file-only  # telegram | file-only | custom
-  output_dir: output/posts
+### Threads (в разработке)
+- Длина: до 500 символов
+- Авто-выжимка из основного поста
+
+---
+
+## Файловая структура
+
+```
+├── CLAUDE.md                    # Главный вход — триггеры и инструкции
+├── channel-dna.md               # DNA основного канала (Telegram)
+├── channel-dna-linkedin.md      # DNA LinkedIn
+├── publish.py                   # Публикация в Telegram (staging/production)
+├── config/
+│   └── config.yaml              # Токены (не в git)
+├── output/
+│   ├── posts/                   # Готовые черновики
+│   └── analytics/               # Будущее: лог постов и паттерны
+└── rules/
+    ├── setup.md                 # Онбординг (канал + платформы)
+    ├── core-pipeline.md         # Основной pipeline
+    ├── fact-check.md            # Проверка фактов
+    ├── deaify-text.md           # 4 критика + правило тире
+    ├── writing-guide.md         # Голос и стиль автора
+    └── adapters/
+        ├── telegram.md          # Telegram адаптер
+        ├── linkedin.md          # LinkedIn адаптер
+        └── threads.md           # Threads адаптер (шаблон)
 ```
 
-## Документация
+---
 
-- [Установка](docs/SETUP.md)
-- [Кастомизация](docs/CUSTOMIZATION.md)
-- [Свои адаптеры](docs/ADAPTERS.md)
+## Статус
 
-## Standards
+| Компонент | Статус |
+|-----------|--------|
+| Telegram pipeline | ✅ Работает |
+| LinkedIn DNA + адаптер | ✅ Настроен |
+| Публикация в Telegram | ✅ Staging + Production |
+| Onboarding (основной канал) | ✅ Работает |
+| Platform Setup (новые платформы) | ✅ Работает |
+| Threads адаптер | 🔧 Шаблон готов, API позже |
+| Competitor Intelligence | 📋 В roadmap |
+| Analytics Layer | 📋 В roadmap |
 
-- [AGENTS.md](https://agents.md) — universal open standard (60k+ projects)
-- [Cursor Rules](https://docs.cursor.com/context/rules-for-ai) — `.cursor/rules/*.mdc`
-- [Windsurf Rules](https://docs.windsurf.com) — `.windsurf/rules/*.md`
+---
 
-## Референс
+## Что дальше
 
-Статья: [Пайплайн для блог-постов](https://sereja.tech/blog/blog-post-pipeline)
+**Threads API** — Meta Developer App, `auto_publish_text`, самообслуживание.
 
-## License
+**LinkedIn API** — OAuth 2.0, ревью приложения 1-2 недели.
 
-MIT
+**Competitor Intelligence** — когда нет идей: сканирует что пишут авторы в нише, предлагает 5 углов.
+
+**Analytics Layer** — логирует каждый пост, раз в месяц показывает паттерны: что заходит, какие хуки работают.
+
+**Картинки** — обложки в едином стиле через DALL-E / Playwright.
+
+**Карусели** — длинный пост → 5-7 карточек для LinkedIn и Threads.
+
+→ Полный план: `ROADMAP.md`
+
+---
+
+## В основе
+
+- [blog-pipeline-template](https://github.com/serejaris/blog-pipeline-template) by Серёжа Рис — скелет пайплайна
+- Claude Code — среда выполнения
+- Exa MCP — research и fact-check
+- Telegram Bot API — публикация

@@ -142,6 +142,7 @@ Format: "[CLAIM]: {exact quote}" + "[FLAG]: {why suspicious}"
 3. **Kill generic phrases:** Replace every flagged phrase
 4. **Add ONE personal touch:** "Я видел как...", "Помню когда..."
 5. **Break one grammar rule:** Start with "И" or "Но", use fragment
+6. **Тире:** заменить все длинные тире (—) на короткие (–). Всегда, без исключений.
 
 ---
 

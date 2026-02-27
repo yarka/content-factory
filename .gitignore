@@ -1,33 +1,23 @@
-# Config with secrets
+# Секреты — никогда не пушить
 config/config.yaml
-
-# Output directory
-output/
-
-# Environment files
 .env
-.env.local
-.env.*.local
+*.env
 
-# OS files
+# Личные DNA-файлы — каждый хранит локально, не пушит
+channel-dna.md
+channel-dna-linkedin.md
+channel-dna-*.md
+rules/writing-guide.md
+
+# Личный output
+output/posts/*.md
+output/*.docx
+output/*.js
+
+# OS
 .DS_Store
-Thumbs.db
+**/.DS_Store
 
-# Editor files
+# IDE
 .idea/
-.vscode/
 *.swp
-*.swo
-*~
-
-# Python
-__pycache__/
-*.py[cod]
-.venv/
-venv/
-
-# Node (if using)
-node_modules/
-
-# Logs
-*.log

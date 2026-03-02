@@ -21,3 +21,6 @@ output/*.js
 # IDE
 .idea/
 *.swp
+
+# Claude Code local settings
+.claude/settings.local.json

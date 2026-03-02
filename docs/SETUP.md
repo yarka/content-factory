@@ -8,8 +8,8 @@
 ## Шаг 1: Клонируй репозиторий
 
 ```bash
-git clone https://github.com/serejaris/blog-pipeline-template my-blog-pipeline
-cd my-blog-pipeline
+git clone https://github.com/yarka/content-factory my-content-factory
+cd my-content-factory
 ```
 
 ## Шаг 2: Настрой конфиг

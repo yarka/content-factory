@@ -65,7 +65,10 @@ globs:
 ```
 Find AI-typical phrases in this text:
 - "важно понимать", "следует отметить", "в заключение"
-- "Это не X — это Y" dramatic contrasts
+- "Это не X — это Y" dramatic contrasts as conclusions
+- "Если не разбираешься в X" — generic audience segmentation
+- "не магия, система" / "не инструмент, подход" — empty slogans
+- Generic future claims: "будущее за X", "скоро всё изменится" — without personal angle
 - Sentences without specific names/numbers/dates
 - Abstract claims without examples
 
@@ -175,6 +178,10 @@ Format: "[CLAIM]: {exact quote}" + "[FLAG]: {why suspicious}"
 - "И вот почему это важно"
 - All paragraphs same length
 - Ending with rhetorical question
+- "Если не разбираешься в X — начни с Y" (patronizing segmentation)
+- "X – это не подписка. Это инструмент." (dramatic contrast as punchline)
+- "будущее за теми кто..." (generic prophecy)
+- Any slogan that sounds good but says nothing specific
 
 ---
 
@@ -187,6 +194,10 @@ Format: "[CLAIM]: {exact quote}" + "[FLAG]: {why suspicious}"
 | No dates/names | Add one real reference |
 | Abstract claim | Add "например" with concrete case |
 | Drama ending | Cut last sentence, end earlier |
+| "Если не разбираешься" | Cut or replace with what YOU did instead |
+| "X – это не Y. Это Z." | Show, don't declare. Add concrete example |
+| "будущее за X" without personal | "Я ставлю на X потому что..." |
+| Empty slogan ("не магия, система") | Replace with the actual mechanic or cut |
 
 ---
 

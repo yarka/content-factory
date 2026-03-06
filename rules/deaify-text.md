@@ -69,6 +69,8 @@ Find AI-typical phrases in this text:
 - "Если не разбираешься в X" — generic audience segmentation
 - "не магия, система" / "не инструмент, подход" — empty slogans
 - Generic future claims: "будущее за X", "скоро всё изменится" — without personal angle
+- "Это не мотивашка" / "Это не совет — это наблюдение" — meta-disclaimer, никто так не говорит
+- "N часов в неделю — не X, а Y" — productivity-tip формат, звучит как лайфхак-канал
 - Sentences without specific names/numbers/dates
 - Abstract claims without examples
 

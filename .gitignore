@@ -9,6 +9,9 @@ channel-dna-linkedin.md
 channel-dna-*.md
 rules/writing-guide.md
 
+# Личные планы
+docs/plans/
+
 # Личный output
 output/posts/*.md
 output/*.docx

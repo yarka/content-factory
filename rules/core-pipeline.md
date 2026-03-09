@@ -176,6 +176,16 @@ globs:
 
 ---
 
+## Phase 7: Save
+
+After the user approves the final post — save it automatically to `output/posts/YYYY-MM-DD-slug.md`.
+
+Do not ask. Just save and confirm: "Saved to output/posts/YYYY-MM-DD-slug.md"
+
+Slug: short English kebab-case summary of the topic (e.g. `founders-competitor-agent-linkedin`).
+
+---
+
 ## Checklist
 
 - [ ] channel-dna.md прочитан
@@ -186,3 +196,4 @@ globs:
 - [ ] Phase 4: fact-check пройден
 - [ ] Phase 5: deaify пройден
 - [ ] Phase 6: адаптер запущен
+- [ ] Phase 7: сохранён в output/posts/

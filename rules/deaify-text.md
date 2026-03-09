@@ -16,6 +16,44 @@ globs:
 - Нет авторского голоса
 - Технический контент с версиями, датами (нужна проверка фактов)
 
+## Visual Output Format
+
+When running critics, output this block BEFORE showing results:
+
+```
+◆ Agent 1: AI Pattern Detector  — running...
+◆ Agent 2: Rhythm Analyzer      — running...
+◆ Agent 3: Specificity Checker  — running...
+◆ Agent 4: Fact Checker         — running...
+
+✓ Agent 1: AI Pattern Detector  — done
+✓ Agent 2: Rhythm Analyzer      — done
+✓ Agent 3: Specificity Checker  — done
+✓ Agent 4: Fact Checker         — done
+```
+
+Then show Results block:
+
+```
+─────────────
+  Results
+─────────────
+  ✗ Agent 1: AI Pattern Detector — 3 issue(s) found
+       → "exact flagged phrase"
+  ✓ Agent 2: Rhythm Analyzer     — clean
+  ✗ Agent 3: Specificity Checker — 2 issue(s) found
+       → "no personal voice"
+       → "no concrete examples"
+  ✓ Agent 4: Fact Checker        — clean
+
+  ⚠️  5 issue(s) flagged. Rewriting...
+─────────────
+```
+
+Then proceed with the rewrite.
+
+---
+
 ## Core Pattern
 
 ```

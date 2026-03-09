@@ -10,9 +10,42 @@ Works with Telegram and LinkedIn.
 
 ---
 
+## System architecture
+
+Four layers. Two are live, two are on the roadmap.
+
+```
+┌─────────────────────────────────────────┐
+│  Intelligence Layer        [roadmap]    │
+│  Scans trends, competitors, top posts   │
+│  in your niche via Exa AI               │
+└────────────────────┬────────────────────┘
+                     ↓
+┌────────────────────▼────────────────────┐
+│  Strategy Layer            [live]       │
+│  ICP → Offer → Content Pillars          │
+│  → 30-day plan → Ongoing review         │
+└────────────────────┬────────────────────┘
+                     ↓
+┌────────────────────▼────────────────────┐
+│  Content Layer             [live]       │
+│  Idea → Pipeline → Adapter → Publish    │
+└────────────────────┬────────────────────┘
+                     ↓
+┌────────────────────▼────────────────────┐
+│  Analytics Layer           [roadmap]    │
+│  Tracks what hooks work, what topics    │
+│  convert → feeds back into strategy     │
+└─────────────────────────────────────────┘
+```
+
+**The key piece: Channel DNA.** One config file captures the company's voice, audience, tone, and format. Every agent reads this file first — that's how you scale without losing authenticity. Swap the file, you have a different brand.
+
+---
+
 ## How it works
 
-Three layers:
+The Content Layer has three components:
 
 **1. Channel DNA** — set up once. Your voice, audience, topics. The system learns how you write and never forgets.
 

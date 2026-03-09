@@ -1,251 +1,253 @@
 ---
-description: Onboarding — настраивает DNA для основного канала или новой платформы
+description: Onboarding — sets up DNA for the main channel or a new platform
 globs:
   - "**/*.md"
 ---
 
-# Setup — Онбординг
+# Setup — Onboarding
 
-Настраивает Channel DNA через диалог.
-Работает для **основного канала** (Telegram) и **новых платформ** (LinkedIn, Threads и т.д.).
+**Language rule: detect the language the user writes in and respond in that language throughout the entire setup.**
 
-**Задай вопросы по одному. Жди ответа перед следующим.**
+Sets up Channel DNA through a dialogue.
+Works for the **main channel** (Telegram) and **new platforms** (LinkedIn, Threads, etc.).
 
----
-
-## Определи режим
-
-Если в команде указана платформа (например `настрой linkedin`, `setup threads`) →
-запусти **Platform Setup** (секция ниже).
-
-Если платформа не указана → запусти **Main Channel Setup** (текущий онбординг).
+**Ask questions one at a time. Wait for the answer before the next one.**
 
 ---
 
-## Шаг 0: Есть канал или начинаем с нуля?
+## Detect mode
 
-Спроси:
-> "Уже ведёшь канал или соцсети с контентом — или начинаем с нуля?"
+If a platform is specified in the command (e.g. `setup linkedin`, `setup threads`) →
+run **Platform Setup** (section below).
 
-**Если с нуля** → пропусти этот шаг, иди к Шагу 1.
-
-**Если есть канал** → спроси:
-> "Скинь ссылку — попробую посмотреть что уже есть. Или сразу кинь сюда 5–10 постов которые тебе нравятся."
-
-Два варианта анализа:
-
-**Вариант А: ссылка на Telegram-канал**
-- Попробуй WebFetch на `https://t.me/s/{username}`
-- Если получилось — прочитай посты, составь впечатление:
-  - Основные темы, тон и голос
-- Поделись коротко: "Вижу что ты пишешь про X, Y. Тон — такой-то."
-- Если WebFetch не сработал (ошибка или пустой ответ) → перейди к Варианту Б
-
-**Вариант Б: посты вручную**
-- Скажи: "Не могу дотянуться до канала напрямую. Скинь сюда 5–10 своих постов — я разберу голос по ним."
-- После получения постов — проанализируй голос (те же параметры: темы, тон, хуки)
-
-Результат в обоих случаях одинаковый: понимание голоса и тем до начала вопросов.
+If no platform specified → run **Main Channel Setup**.
 
 ---
 
-## Шаг 1: Направление (смотрим вперёд)
+## Step 0: Existing channel or starting from scratch?
 
-> "Если через 6 месяцев ты посмотришь на этот канал — что хочешь там увидеть? Про что он будет, кто его читает, что ты через него строишь?"
+Ask:
+> "Do you already have a channel or social media with content — or are we starting from scratch?"
 
-Запиши: цель канала, аудитория, зачем это автору.
+**If from scratch** → skip this step, go to Step 1.
+
+**If there's a channel** → ask:
+> "Share the link — I'll try to look at what you have. Or just paste 5–10 posts you like right here."
+
+Two analysis options:
+
+**Option A: Telegram channel link**
+- Try WebFetch on `https://t.me/s/{username}`
+- If it works — read posts, form an impression:
+  - Main topics, tone and voice
+- Share briefly: "I see you write about X, Y. Tone is like this."
+- If WebFetch fails (error or empty response) → go to Option B
+
+**Option B: Posts manually**
+- Say: "Can't reach the channel directly. Paste 5–10 of your posts here — I'll analyze your voice from them."
+- After receiving posts — analyze voice (same parameters: topics, tone, hooks)
+
+Result in both cases: understanding of voice and topics before starting questions.
 
 ---
 
-## Шаг 2: Уникальный угол
+## Step 1: Direction (looking forward)
 
-> "AI-контента сейчас море. Что твоё — то что только ты можешь показывать из своего опыта? Какой угол есть у тебя которого нет у других?"
+> "If you looked at this channel in 6 months — what would you want to see? What would it be about, who reads it, what are you building through it?"
 
-Запиши: уникальное позиционирование автора.
+Write down: channel goal, audience, why this matters to the author.
 
 ---
 
-## Шаг 3: Рубрики
+## Step 2: Unique angle
 
-На основе ответов из шагов 1-2 **предложи 4-6 рубрик сам**.
-Не задавай открытый вопрос — сформулируй варианты и спроси:
+> "There's a sea of AI content right now. What's yours — what can only you show from your experience? What angle do you have that others don't?"
 
-> "На основе того что ты рассказал, вижу такие рубрики:
-> 1. [рубрика] — [описание]
-> 2. [рубрика] — [описание]
+Write down: author's unique positioning.
+
+---
+
+## Step 3: Content pillars
+
+Based on answers from steps 1–2, **propose 4–6 pillars yourself**.
+Don't ask an open question — formulate options and ask:
+
+> "Based on what you've shared, I see these pillars:
+> 1. [pillar] — [description]
+> 2. [pillar] — [description]
 > ...
-> Это то что ты видишь? Или что-то убрать / добавить / переименовать?"
+> Does this feel right? Anything to remove / add / rename?"
 
-Запиши финальные рубрики в `channel-dna.md`.
+Write final pillars to `channel-dna.md`.
 
 ---
 
-## Шаг 4: Голос — свои посты
+## Step 4: Voice — your posts
 
-> "Скинь 5-10 своих постов которые тебе нравятся или которые хорошо зашли. Прямо сюда — я проанализирую твой голос."
+> "Share 5–10 of your posts that you like or that performed well. Paste them right here — I'll analyze your voice."
 
-После получения постов — запусти глубокий анализ голоса:
+After receiving posts — run deep voice analysis:
 
 ```
-Ты профессиональный лингвист-стилист и эксперт по анализу авторского текста.
+You are a professional linguistic stylist and expert in analyzing author's writing.
 
-Твоя задача: провести глубокий анализ предоставленных примеров текста и создать детальное руководство, которое позволит в точности воспроизвести авторский стиль в новых текстовых постах для социальных сетей.
+Your task: conduct a deep analysis of the provided text samples and create a detailed guide that will allow you to precisely reproduce the author's style in new social media posts.
 
-Проанализируй и систематизируй следующие аспекты (все особенности пиши в одну строку после названия аспекта, разделяя точкой с запятой):
+Analyze and systematize the following aspects (write all features in one line after the aspect name, separated by semicolons):
 
-Тональность и стиль: {Проведи детальный анализ эмоционального тона текста: формальный/неформальный, серьезный/юмористический, авторитетный/скромный. Определи преобладающие эмоциональные оттенки: вдохновляющий, провокационный, информативный, критический и т.д. Отметь используемые риторические приемы, метафоры, аналогии. Определи, как автор позиционирует себя: как эксперт, друг, наставник, исследователь.}
+Tone and style: {Conduct a detailed analysis of the emotional tone: formal/informal, serious/humorous, authoritative/humble. Identify the dominant emotional notes: inspiring, provocative, informative, critical, etc. Note rhetorical devices, metaphors, analogies used. Determine how the author positions themselves: as an expert, friend, mentor, researcher.}
 
-Лексические особенности: {Проанализируй словарный запас: простой/сложный, обыденный/специализированный, современный/классический. Выяви характерные слова-маркеры, устойчивые выражения, авторские неологизмы, фразеологизмы. Определи наличие профессиональной терминологии, иностранных слов, сленга. Создай список из 10-15 наиболее характерных для автора слов и выражений.}
+Lexical features: {Analyze vocabulary: simple/complex, everyday/specialized, contemporary/classical. Identify characteristic marker words, set phrases, author's neologisms, idioms. Determine presence of professional terminology, foreign words, slang. Create a list of 10–15 words and expressions most characteristic of the author.}
 
-Синтаксические особенности: {Определи типичную длину предложений, их структуру и сложность. Проанализируй соотношение простых и сложных предложений. Отметь особенности использования вводных конструкций, причастных и деепричастных оборотов. Выяви характерные синтаксические приемы: инверсия, параллелизм, эллипсис, риторические вопросы.}
+Syntactic features: {Determine typical sentence length, structure and complexity. Analyze the ratio of simple to complex sentences. Note the use of introductory constructions, participial phrases. Identify characteristic syntactic devices: inversion, parallelism, ellipsis, rhetorical questions.}
 
-Структура контента: {Проанализируй композиционное построение текста: вступление, основную часть, заключение. Определи типичные приемы начала текста (хуки): вопрос, провокация, история, статистика. Выяви логические переходы между частями текста, наличие подзаголовков. Определи ключевые элементы завершения: вывод, призыв к действию, риторический вопрос. Опиши, как развивается основная мысль на протяжении текста.}
+Content structure: {Analyze the compositional structure: introduction, main part, conclusion. Identify typical text-opening techniques (hooks): question, provocation, story, statistics. Identify logical transitions between parts. Determine key closing elements: conclusion, call to action, rhetorical question. Describe how the main idea develops throughout the text.}
 
-Форматирование и визуальная подача: {Проанализируй длину и структуру абзацев, использование маркированных и нумерованных списков, цитат, выделений текста. Определи типичное количество предложений в абзаце. Отметь особенности использования заголовков и подзаголовков, их оформление. Проанализируй визуальное структурирование информации.}
+Formatting and visual presentation: {Analyze paragraph length and structure, use of bullet/numbered lists, quotes, text highlights. Determine typical number of sentences per paragraph. Note use of headings and subheadings. Analyze visual structuring of information.}
 
-Орфография, пунктуация и типографика: {Отметь особенности использования знаков препинания: тире, двоеточия, скобки, многоточия. Проанализируй особенности оформления цитат и диалогов. Определи, обращается ли автор к читателю, и какую форму обращения использует (ты/вы). Выяви типографские предпочтения: использование определенного типа кавычек, тире, особенности оформления списков.}
+Spelling, punctuation and typography: {Note punctuation preferences: dashes, colons, parentheses, ellipses. Analyze formatting of quotes and dialogues. Determine if the author addresses the reader, and what form they use. Identify typographic preferences: quote style, dash type, list formatting.}
 
-Стилистические приемы и фигуры речи: {Проанализируй использование метафор, сравнений, эпитетов, гипербол, иронии и других стилистических приемов. Выяви наличие историй, примеров из жизни, статистики, экспертных мнений. Определи баланс между эмоциональностью и фактологичностью.}
+Stylistic devices and figures of speech: {Analyze use of metaphors, similes, epithets, hyperbole, irony and other devices. Identify presence of stories, personal examples, statistics, expert opinions. Determine the balance between emotional and factual content.}
 
-Взаимодействие с аудиторией: {Проанализируй, как автор вовлекает читателя: прямые обращения, риторические вопросы, императивы. Определи степень диалогичности текста, создания эффекта личного общения. Выяви способы проявления эмпатии к читателю, предвосхищения возражений, создания доверия.}
+Audience engagement: {Analyze how the author engages the reader: direct address, rhetorical questions, imperatives. Determine the degree of dialogic quality, personal communication feel. Identify ways empathy is shown, objections anticipated, trust built.}
 
-В ответ предоставь только результат анализа по указанным разделам, без вступительных объяснений или комментариев. Твоя задача — создать настолько точное руководство по стилю, чтобы новый текст, написанный по нему, был неотличим от оригинальных работ автора.
+Provide only the analysis result by the specified sections, without introductory explanations or comments. Your task is to create such a precise style guide that new text written from it would be indistinguishable from the author's original work.
 ```
 
-Запиши результат в `rules/writing-guide.md` — полностью, сохранив все 8 секций.
+Write the result to `rules/writing-guide.md` — in full, preserving all 8 sections.
 
 ---
 
-## Шаг 5: Голос — референсы (опционально)
+## Step 5: Voice — references (optional)
 
-> "Есть каналы или авторы, чей стиль тебе близок? Скинь 2-3 поста которые тебе нравятся — не для копирования, а чтобы я понял что резонирует."
+> "Are there channels or authors whose style resonates with you? Share 2–3 posts you like — not to copy, but so I understand what resonates."
 
-Запиши примеры в `channel-dna.md` секцию "Референсные каналы".
-
----
-
-## Шаг 6: Технические параметры
-
-Спроси одним сообщением:
-> "Последнее: длина постов (короткие до 500 / средние до 1500 / длинные?), эмодзи (да/нет/иногда), хэштеги?"
-
-Запиши в `channel-dna.md` секцию "Формат постов".
+Write examples to `channel-dna.md` section "Reference channels".
 
 ---
 
-## После онбординга (Main Channel)
+## Step 6: Technical parameters
 
-Проверь что заполнено:
-- [ ] `channel-dna.md` — цель, аудитория, уникальный угол, рубрики, примеры постов, референсы, формат
-- [ ] `rules/writing-guide.md` — голос, хуки, типы постов, что избегать
+Ask in one message:
+> "Last thing: post length (short up to 500 / medium up to 1500 / long?), emojis (yes/no/sometimes), hashtags?"
 
-Сообщи пользователю:
+Write to `channel-dna.md` section "Post format".
+
+---
+
+## After onboarding (Main Channel)
+
+Check that these are filled:
+- [ ] `channel-dna.md` — goal, audience, unique angle, pillars, post examples, references, format
+- [ ] `rules/writing-guide.md` — voice, hooks, post types, what to avoid
+
+Tell the user:
 
 ```
-Готово. Channel DNA настроен.
+Done. Channel DNA is set up.
 
-Теперь чтобы написать пост — просто скинь идею.
-Я запущу пайплайн: Questions → Research → Write → Fact-check → Deaify → Draft.
+Now to write a post — just share an idea.
+I'll run the pipeline: Questions → Research → Write → Fact-check → Deaify → Draft.
 
-Попробуем прямо сейчас?
+Want to try right now?
 ```
 
 ---
 
-## Platform Setup — Онбординг новой платформы
+## Platform Setup — Onboarding a new platform
 
-Используй когда подключаешь LinkedIn, Threads, Instagram или другую платформу.
+Use when connecting LinkedIn, Threads, Instagram or another platform.
 
-**Файлы:** `channel-dna-{platform}.md` (например `channel-dna-linkedin.md`)
+**Files:** `channel-dna-{platform}.md` (e.g. `channel-dna-linkedin.md`)
 
-**Задай вопросы по одному. Жди ответа.**
-
----
-
-### Шаг P0: Цель платформы
-
-> "Зачем {platform} в твоём контент-миксе? Что хочешь там строить — аудиторию, лиды, личный бренд, репутацию в нише?"
-
-Запиши: цель, KPI, горизонт.
+**Ask questions one at a time. Wait for the answer.**
 
 ---
 
-### Шаг P1: Язык
+### Step P0: Platform goal
 
-> "На каком языке постим на {platform}? Варианты:
-> А) Только английский
-> Б) Только русский
-> В) Оба — разный контент под разную аудиторию"
+> "Why {platform} in your content mix? What are you building there — audience, leads, personal brand, niche reputation?"
 
-Язык влияет на всё: голос, хуки, аудиторию. Запиши однозначно.
+Write down: goal, KPI, time horizon.
 
 ---
 
-### Шаг P2: Аудитория на этой платформе
+### Step P1: Language
 
-> "Кто тебя читает именно там? Может отличаться от Telegram — другая страна, другой контекст, другой уровень знакомства с тобой."
+> "What language are we posting in on {platform}?
+> A) English only
+> B) Russian only
+> C) Both — different content for different audiences"
 
-Запиши: аудитория, контекст (холодная/тёплая), что их волнует.
-
----
-
-### Шаг P3: Голос на этой платформе
-
-> "Как ты хочешь звучать на {platform}? Это может отличаться от Telegram.
-> Например: более профессионально, короче, с другим акцентом на бизнес/личное.
-> Или точно так же — тогда скажи 'тот же голос'."
-
-Если "тот же голос" → используй `rules/writing-guide.md` без изменений.
-Если другой → запиши отличия в `channel-dna-{platform}.md`.
+Language affects everything: voice, hooks, audience. Write it down clearly.
 
 ---
 
-### Шаг P4: Референсы на этой платформе
+### Step P2: Audience on this platform
 
-> "Скинь 3-5 постов которые тебе нравятся именно на {platform} — не свои, а чужие. Чей стиль резонирует? Можно просто скопипастить текст."
+> "Who reads you there specifically? Can differ from Telegram — different country, different context, different familiarity with you."
 
-После получения — проанализируй:
-- Что общего в структуре
-- Как начинают и заканчивают
-- Тон, длина, использование пространства
-
-Запиши в `channel-dna-{platform}.md` секцию "Референсы".
+Write down: audience, context (cold/warm), what they care about.
 
 ---
 
-### Шаг P5: Свои примеры (опционально)
+### Step P3: Voice on this platform
 
-> "Уже постил что-то на {platform}? Если есть посты которые зашли — скинь, проанализирую."
+> "How do you want to sound on {platform}? This can differ from Telegram.
+> For example: more professional, shorter, with a different focus on business/personal.
+> Or exactly the same — then say 'same voice'."
 
-Если нет — пропустить.
-
----
-
-### Шаг P6: Технические параметры платформы
-
-Сообщи параметры платформы (знаешь сам), затем спроси:
-> "Под {platform} длина оптимально {X} символов. Хэштеги — да/нет? Эмодзи?"
-
-Запиши финальные параметры.
+If "same voice" → use `rules/writing-guide.md` without changes.
+If different → write differences to `channel-dna-{platform}.md`.
 
 ---
 
-### После Platform Setup
+### Step P4: References on this platform
 
-Проверь что заполнено в `channel-dna-{platform}.md`:
-- [ ] Цель и KPI
-- [ ] Язык (однозначно)
-- [ ] Аудитория на платформе
-- [ ] Голос / отличия от основного
-- [ ] Референсы (3-5 постов)
-- [ ] Технические параметры
+> "Share 3–5 posts you like specifically on {platform} — not yours, someone else's. Whose style resonates? You can just paste the text."
 
-Сообщи:
+After receiving — analyze:
+- What the structure has in common
+- How they open and close
+- Tone, length, use of white space
+
+Write to `channel-dna-{platform}.md` section "References".
+
+---
+
+### Step P5: Your own examples (optional)
+
+> "Have you posted anything on {platform} already? If there are posts that performed — share them, I'll analyze."
+
+If none — skip.
+
+---
+
+### Step P6: Technical platform parameters
+
+Share platform parameters (you know them), then ask:
+> "For {platform} the optimal length is {X} characters. Hashtags — yes/no? Emojis?"
+
+Write final parameters.
+
+---
+
+### After Platform Setup
+
+Check what's filled in `channel-dna-{platform}.md`:
+- [ ] Goal and KPI
+- [ ] Language (clearly stated)
+- [ ] Audience on the platform
+- [ ] Voice / differences from main
+- [ ] References (3–5 posts)
+- [ ] Technical parameters
+
+Tell the user:
 
 ```
-Готово. DNA для {platform} настроен.
-Файл: channel-dna-{platform}.md
+Done. DNA for {platform} is set up.
+File: channel-dna-{platform}.md
 
-Теперь при запросе "в {platform}" адаптер будет читать именно его.
-Напиши пост — попробуем?
+Now when you say "for {platform}" the adapter will read exactly this file.
+Write a post — want to try?
 ```

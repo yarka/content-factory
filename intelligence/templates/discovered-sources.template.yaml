@@ -1,0 +1,23 @@
+# Copy to intelligence/accounts/<account-slug>/discovered-sources.yaml
+
+discovery_run_id: intel-discovery-YYYYMMDD-01
+account_slug: your-account-slug
+
+discovered_entities:
+  - entity_id: ent_001
+    name: Example Competitor
+    source_family: linkedin
+    source_type: profile
+    strategy_type: direct_competitor_discovery
+    url: ""
+    relevance_reason: Similar offer and similar audience
+    confidence: high
+
+  - entity_id: ent_002
+    name: Example Founder Community
+    source_family: reddit
+    source_type: subreddit
+    strategy_type: audience_pain_discovery
+    url: ""
+    relevance_reason: Strong discussion density around buyer pain language
+    confidence: medium

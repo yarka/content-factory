@@ -1,0 +1,60 @@
+# Copy to strategy/accounts/<account-slug>/account-profile.yaml
+
+account_slug: your-account-slug
+business_name: Your Business Name
+business_category: AI consulting
+primary_platform: LinkedIn
+goal_type: trust_and_audience
+
+audience:
+  primary_icp: founders and operators evaluating AI adoption
+  secondary_icp: consultants and AI builders
+  pains:
+    - unclear AI roadmap
+    - low confidence in implementation
+  desired_outcomes:
+    - practical AI use cases
+    - trusted partner shortlist
+
+offer_ladder:
+  - stage: lead_magnet
+    offer: 30-minute free intro call
+    desired_action: book a call
+  - stage: paid_offer
+    offer: AI consulting engagement
+    desired_action: start a paid project
+
+lead_magnet:
+  name: 30-minute free intro call
+  call_to_action: soft invitation after trust is built
+
+proof_assets:
+  - type: case_study
+    title: Example transformation
+    summary: Replace with proof, outcomes, or frameworks.
+    link: ""
+  - type: founder_story
+    title: Personal operating lesson
+    summary: Replace with your most credible story asset.
+    link: ""
+
+tone_constraints:
+  desired_traits:
+    - direct
+    - practical
+    - trust-building
+  avoid:
+    - hype
+    - hard-sell CTA
+    - generic AI cliches
+
+manual_context_sources:
+  - type: notes
+    location: strategy/accounts/<account-slug>/manual-context.md
+    note: Optional extra context, competitor notes, UVP, or reference posts.
+
+strategy_defaults:
+  posting_cadence_per_week: 3
+  pillar_count_target: 4
+  auto_discovery_enabled: true
+  refresh_mode: manual

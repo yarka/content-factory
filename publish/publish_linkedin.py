@@ -3,8 +3,8 @@
 Публикация поста в LinkedIn через Chrome.
 
 Использование:
-  python3 publish_linkedin.py --file output/posts/YYYY-MM-DD-slug.md
-  python3 publish_linkedin.py --setup   # первичный логин
+  python3 publish/publish_linkedin.py --file output/posts/YYYY-MM-DD-slug.md
+  python3 publish/publish_linkedin.py --setup   # первичный логин
 """
 
 import argparse

@@ -38,9 +38,9 @@ output:
 
 | Adapter | File |
 |---------|------|
-| telegram | `rules/publish/adapters/telegram.md` |
-| file-only | `rules/publish/adapters/file-only.md` |
-| custom | `rules/publish/adapters/custom.md` |
+| telegram | `publish/workflows/adapters/telegram.md` |
+| file-only | `publish/workflows/adapters/file-only.md` |
+| custom | `publish/workflows/adapters/custom.md` |
 
 ## Step 3: Execute Adapter
 

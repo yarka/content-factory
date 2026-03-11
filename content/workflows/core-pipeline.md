@@ -9,6 +9,20 @@ globs:
 Ядро контент-завода. Производит core draft в авторском голосе.
 Платформа не важна на этом этапе — только идея и голос.
 
+## Phase 0: Strategy Brief Handoff
+
+Если пользователь приходит не с сырой идеей, а с готовым артефактом из strategy layer:
+
+- Прочитай selected strategy post brief из `strategy/accounts/<account-slug>/content-plan.yaml`
+- Прочитай image brief для этого поста
+- Прочитай approved strategy constraints из того же brief
+- Прочитай supporting evidence из `intelligence/accounts/<account-slug>/intelligence-snapshot.yaml`
+
+В этом режиме:
+- не придумывай заново стратегию поста
+- используй brief как source of truth для угла, proof asset и soft CTA
+- задавай только вопросы на заполнение пробелов, если не хватает фактов или деталей сцены
+
 ```
 ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
 │  Phase 1:   │ ──▶ │  Phase 2:   │ ──▶ │  Phase 3:   │
@@ -33,7 +47,7 @@ globs:
           └─────────────┘     └─────────────┘
 ```
 
-**Всегда читай `channel-dna.md` перед запуском.**
+**Всегда читай `content/channel-dna.md` перед запуском.**
 
 ---
 
@@ -47,6 +61,10 @@ globs:
 
 **Если нужно:**
 3. **Платформа** — куда публикуем? (Telegram / LinkedIn / Threads / все)
+
+Если работаешь из strategy brief:
+- не спрашивай угол заново, возьми его из brief
+- сфокусируй вопросы на missing specifics: цифры, сцена, доказательства, фактические детали
 
 Если платформа не указана — спроси. Это нужно для адаптера на выходе.
 
@@ -97,6 +115,12 @@ globs:
 Личный опыт без внешних фактов → пропусти research,
 спроси конкретные детали: что произошло, цифры, вывод.
 
+### Режим D: Strategy Evidence
+Если post brief уже выбран:
+- используй supporting evidence из intelligence snapshot как research baseline
+- добирай только недостающие факты
+- сохрани approved strategy constraints и image brief в контексте до конца пайплайна
+
 ---
 
 ## Phase 3: Write — Core Draft
@@ -106,7 +130,7 @@ globs:
 ```
 Придумай 3 варианта заголовка.
 
-Типы (rules/writing-guide.md):
+Типы (`content/writing-guide.md`):
 - Zinger: короткий удар ("Кодер выживет. Менеджер — нет.")
 - First-Person: личный ("Мой запасной план — делать массаж.")
 - Question: вопрос-боль ("Если завтра без работы — чем займёшься?")
@@ -128,13 +152,13 @@ globs:
 Контекст: {Phase 1}
 Сырьё: {Phase 2}
 
-Читай: channel-dna.md + rules/writing-guide.md
+Читай: `content/channel-dna.md` + `content/writing-guide.md`
 
 ПРАВИЛА CORE DRAFT:
 - Язык: русский (адаптер сам переведёт если нужно)
 - Длина: сколько нужно идее — не думай про платформу
 - Структура: Заголовок → Тело → Финал
-- Тон: голос автора из writing-guide.md
+- Тон: голос автора из `content/writing-guide.md`
 - Включи все детали, факты, личные моменты — адаптер уберёт лишнее
 
 Верни ТОЛЬКО текст. Без комментариев.
@@ -144,7 +168,7 @@ globs:
 
 ## Phase 4: Fact-check
 
-Прочитай `rules/fact-check.md`.
+Прочитай `content/workflows/fact-check.md`.
 
 Если пост содержит внешние факты — проверь через Exa MCP или WebFetch.
 Если личная история / мнение — напиши "Fact-check: пропущен" и иди дальше.
@@ -153,7 +177,7 @@ globs:
 
 ## Phase 5: Deaify
 
-Прочитай `rules/deaify-text.md`. Прогони core draft через 4 критиков.
+Прочитай `content/workflows/deaify-text.md`. Прогони core draft через 4 критиков.
 
 После deaify → **Core Draft готов**.
 
@@ -164,13 +188,13 @@ globs:
 Спроси если платформа ещё не выбрана:
 > "Для какой площадки готовим? Telegram / LinkedIn / Threads / все три?"
 
-Запусти нужный адаптер из `rules/adapters/`:
+Запусти нужный адаптер из `content/workflows/adapters/`:
 
 | Платформа | Файл | Язык | Формат |
 |-----------|------|------|--------|
-| Telegram | `adapters/telegram.md` | RU | HTML, до 1500 символов |
-| LinkedIn | `adapters/linkedin.md` | EN | plain text, до 3000 символов |
-| Threads | `adapters/threads.md` | RU/EN | plain text, до 500 символов |
+| Telegram | `content/workflows/adapters/telegram.md` | RU | HTML, до 1500 символов |
+| LinkedIn | `content/workflows/adapters/linkedin.md` | EN | plain text, до 3000 символов |
+| Threads | `content/workflows/adapters/threads.md` | RU/EN | plain text, до 500 символов |
 
 Если выбраны несколько — запусти адаптеры последовательно.
 
@@ -188,7 +212,7 @@ Slug: short English kebab-case summary of the topic (e.g. `founders-competitor-a
 
 ## Checklist
 
-- [ ] channel-dna.md прочитан
+- [ ] content/channel-dna.md прочитан
 - [ ] Phase 1: идея + угол + платформа
 - [ ] Phase 2: режим выбран, сырьё собрано
 - [ ] Phase 3.1: заголовок выбран

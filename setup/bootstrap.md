@@ -78,7 +78,7 @@ Don't ask an open question — formulate options and ask:
 > ...
 > Does this feel right? Anything to remove / add / rename?"
 
-Write final pillars to `channel-dna.md`.
+Write final pillars to `content/channel-dna.md`.
 
 ---
 
@@ -114,7 +114,7 @@ Audience engagement: {Analyze how the author engages the reader: direct address,
 Provide only the analysis result by the specified sections, without introductory explanations or comments. Your task is to create such a precise style guide that new text written from it would be indistinguishable from the author's original work.
 ```
 
-Write the result to `rules/writing-guide.md` — in full, preserving all 8 sections.
+Write the result to `content/writing-guide.md` — in full, preserving all 8 sections.
 
 ---
 
@@ -122,7 +122,7 @@ Write the result to `rules/writing-guide.md` — in full, preserving all 8 secti
 
 > "Are there channels or authors whose style resonates with you? Share 2–3 posts you like — not to copy, but so I understand what resonates."
 
-Write examples to `channel-dna.md` section "Reference channels".
+Write examples to `content/channel-dna.md` section "Reference channels".
 
 ---
 
@@ -131,15 +131,15 @@ Write examples to `channel-dna.md` section "Reference channels".
 Ask in one message:
 > "Last thing: post length (short up to 500 / medium up to 1500 / long?), emojis (yes/no/sometimes), hashtags?"
 
-Write to `channel-dna.md` section "Post format".
+Write to `content/channel-dna.md` section "Post format".
 
 ---
 
 ## After onboarding (Main Channel)
 
 Check that these are filled:
-- [ ] `channel-dna.md` — goal, audience, unique angle, pillars, post examples, references, format
-- [ ] `rules/writing-guide.md` — voice, hooks, post types, what to avoid
+- [ ] `content/channel-dna.md` — goal, audience, unique angle, pillars, post examples, references, format
+- [ ] `content/writing-guide.md` — voice, hooks, post types, what to avoid
 
 Tell the user:
 
@@ -158,7 +158,7 @@ Want to try right now?
 
 Use when connecting LinkedIn, Threads, Instagram or another platform.
 
-**Files:** `channel-dna-{platform}.md` (e.g. `channel-dna-linkedin.md`)
+**Files:** `content/channel-dna-{platform}.md` (e.g. `content/channel-dna-linkedin.md`)
 
 **Ask questions one at a time. Wait for the answer.**
 
@@ -197,8 +197,8 @@ Write down: audience, context (cold/warm), what they care about.
 > For example: more professional, shorter, with a different focus on business/personal.
 > Or exactly the same — then say 'same voice'."
 
-If "same voice" → use `rules/writing-guide.md` without changes.
-If different → write differences to `channel-dna-{platform}.md`.
+If "same voice" → use `content/writing-guide.md` without changes.
+If different → write differences to `content/channel-dna-{platform}.md`.
 
 ---
 
@@ -211,7 +211,7 @@ After receiving — analyze:
 - How they open and close
 - Tone, length, use of white space
 
-Write to `channel-dna-{platform}.md` section "References".
+Write to `content/channel-dna-{platform}.md` section "References".
 
 ---
 
@@ -234,7 +234,7 @@ Write final parameters.
 
 ### After Platform Setup
 
-Check what's filled in `channel-dna-{platform}.md`:
+Check what's filled in `content/channel-dna-{platform}.md`:
 - [ ] Goal and KPI
 - [ ] Language (clearly stated)
 - [ ] Audience on the platform
@@ -246,7 +246,7 @@ Tell the user:
 
 ```
 Done. DNA for {platform} is set up.
-File: channel-dna-{platform}.md
+File: content/channel-dna-{platform}.md
 
 Now when you say "for {platform}" the adapter will read exactly this file.
 Write a post — want to try?

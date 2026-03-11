@@ -21,7 +21,7 @@ globs:
 - Абзацы: 1-3 предложения, пустая строка между ними
 - Финал: вопрос к аудитории или открытая мысль
 - Тире: только короткие (–), никаких длинных (—)
-- Хэштеги: только если указаны в channel-dna.md
+- Хэштеги: только если указаны в `content/channel-dna.md`
 - Ссылки: <a href="url">текст</a>
 
 Если core draft длиннее 1500 символов:
@@ -56,7 +56,7 @@ TELEGRAM
 
 ─────────────────────────
 Символов: {число}
-Рубрика: {из channel-dna.md}
+Рубрика: {из content/channel-dna.md}
 ─────────────────────────
 ```
 
@@ -66,6 +66,6 @@ TELEGRAM
 
 После одобрения:
 ```bash
-python3 publish.py --file output/posts/{дата}-{slug}.md
-python3 publish.py --file output/posts/{дата}-{slug}.md --env production
+python3 publish/publish.py --file output/posts/{дата}-{slug}.md
+python3 publish/publish.py --file output/posts/{дата}-{slug}.md --env production
 ```

@@ -4,10 +4,10 @@ config/config.yaml
 *.env
 
 # Личные DNA-файлы — каждый хранит локально, не пушит
-channel-dna.md
-channel-dna-linkedin.md
-channel-dna-*.md
-rules/writing-guide.md
+content/channel-dna.md
+content/channel-dna-linkedin.md
+content/channel-dna-*.md
+content/writing-guide.md
 
 # Личные планы
 docs/plans/
@@ -17,6 +17,14 @@ output/posts/*.md
 output/*.docx
 output/*.js
 
+# Личные strategy artifacts
+strategy/accounts/*
+!strategy/accounts/.gitkeep
+
+# Личные intelligence artifacts
+intelligence/accounts/*
+!intelligence/accounts/.gitkeep
+
 # OS
 .DS_Store
 **/.DS_Store
@@ -24,6 +32,10 @@ output/*.js
 # IDE
 .idea/
 *.swp
+
+# Python cache
+__pycache__/
+*.pyc
 
 # Claude Code local settings
 .claude/settings.local.json

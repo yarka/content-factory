@@ -13,10 +13,10 @@ globs:
 
 | Что | Где |
 |-----|-----|
-| **Стиль** | `rules/writing-guide.md` |
-| **Термины AI** | `rules/ai-terms-ru.md` |
-| **Деаификация** | `rules/deaify-text.md` |
-| **Публикация** | `rules/publish/publish.md` |
+| **Стиль** | `content/writing-guide.md` |
+| **Термины AI** | `content/ai-terms-ru.md` |
+| **Деаификация** | `content/workflows/deaify-text.md` |
+| **Публикация** | `publish/workflows/publish.md` |
 | **Конфиг** | `config/config.yaml` |
 
 ## Workflow
@@ -109,7 +109,7 @@ Research: {результат Phase 2}
 - Инлайн-ссылки в тексте (НЕ секция "Источники" в конце)
 - Frontmatter: title, date, description, tags
 
-Прочитай rules/writing-guide.md и rules/ai-terms-ru.md для стиля.
+Прочитай `content/writing-guide.md` и `content/ai-terms-ru.md` для стиля.
 ```
 
 **Validation:** word count ≥ 600, содержит ASCII диаграмму.
@@ -120,7 +120,7 @@ Research: {результат Phase 2}
 
 После получения черновика — **обязательно** прогони через деаификацию.
 
-Прочитай `rules/deaify-text.md` и выполни:
+Прочитай `content/workflows/deaify-text.md` и выполни:
 - Запусти 4 параллельных критика
 - Проверь факты через web search
 - Перепиши с учётом замечаний
@@ -131,7 +131,7 @@ Research: {результат Phase 2}
 
 ## Phase 5: Publish
 
-Прочитай `rules/publish/publish.md` — он определит adapter из `config/config.yaml`:
+Прочитай `publish/workflows/publish.md` — он определит adapter из `config/config.yaml`:
 
 - `telegram` — добавит в очередь Telegram канала
 - `file-only` — сохранит в папку output/
@@ -208,5 +208,5 @@ Intro — хук + problem statement (≤30 слов).
 - [ ] **Phase 1:** Вопросы — угол, контекст, аудитория, takeaway
 - [ ] **Phase 2:** Research — web search, 3+ источников
 - [ ] **Phase 3:** Черновик — 600+ слов, ASCII диаграмма
-- [ ] **Phase 4:** Deaify — `rules/deaify-text.md`
-- [ ] **Phase 5:** Publish — `rules/publish/publish.md`
+- [ ] **Phase 4:** Deaify — `content/workflows/deaify-text.md`
+- [ ] **Phase 5:** Publish — `publish/workflows/publish.md`

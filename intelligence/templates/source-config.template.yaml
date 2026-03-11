@@ -1,0 +1,35 @@
+# Copy to intelligence/accounts/<account-slug>/source-config.yaml
+
+account_slug: your-account-slug
+business_context:
+  business_name: Your Business Name
+  category: AI consulting
+  offer_summary: Consulting for founders and operators adopting AI
+  audience_summary: Founders, operators, and AI-curious business owners
+
+platform_focus:
+  primary_platform: LinkedIn
+  secondary_platforms:
+    - Reddit
+    - websites/blogs
+
+search_constraints:
+  geography: global_english
+  language: english
+  freshness_window_days: 90
+  relevance_bias: trust_building_patterns
+
+manual_context_sources:
+  - intelligence/accounts/<account-slug>/manual-context.md
+
+source_tiers:
+  tier_1:
+    - linkedin
+    - reddit
+    - websites/blogs
+  tier_2_extensions:
+    - youtube
+    - instagram
+    - x
+    - newsletters
+    - comments/community_signals

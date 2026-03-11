@@ -4,7 +4,7 @@
 
 ## Структура
 
-Создай файл `rules/publish/adapters/{your-adapter}.md`:
+Создай файл `publish/workflows/adapters/{your-adapter}.md`:
 
 ```markdown
 # {Adapter Name}

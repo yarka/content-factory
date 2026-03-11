@@ -11,18 +11,18 @@ globs:
 ## Входные данные
 
 **Всегда читай перед запуском:**
-1. `channel-dna-linkedin.md` — DNA специфичный для LinkedIn (цель, аудитория, голос, референсы)
-2. `channel-dna.md` — основной голос автора
-3. `rules/writing-guide.md` — стиль
+1. `content/channel-dna-linkedin.md` — DNA специфичный для LinkedIn (цель, аудитория, голос, референсы)
+2. `content/channel-dna.md` — основной голос автора
+3. `content/writing-guide.md` — стиль
 
-Если `channel-dna-linkedin.md` не заполнен (пустые поля) → запусти онбординг:
+Если `content/channel-dna-linkedin.md` не заполнен (пустые поля) → запусти онбординг:
 > "LinkedIn DNA не настроен. Запустить? (это займёт 5-6 вопросов)"
 
 ## Особенности площадки
 
 | Параметр | Значение |
 |----------|----------|
-| Язык | English only (см. channel-dna-linkedin.md) |
+| Язык | English only (см. content/channel-dna-linkedin.md) |
 | Тон | 80% бизнес-инсайт, 20% личная история как контекст |
 | Длина | **600–1200 символов**. Ёмко, не растягивать. |
 | Формат | Plain text, никакого HTML |
@@ -38,7 +38,7 @@ globs:
 
 ## Язык
 
-Прочитай поле "Язык" из `channel-dna-linkedin.md`:
+Прочитай поле "Язык" из `content/channel-dna-linkedin.md`:
 - **EN** → переводи core draft на английский (Step 1 ниже)
 - **RU** → не переводи, адаптируй стиль под LinkedIn
 - **Оба** → создай две версии: сначала RU, потом EN
@@ -71,10 +71,10 @@ globs:
 Адаптируй core draft под LinkedIn на русском.
 
 Правила:
-- Сохрани голос автора из writing-guide.md
+- Сохрани голос автора из `content/writing-guide.md`
 - Первая строка = хук (видна до "показать ещё")
 - Тон: чуть профессиональнее чем в Telegram, без корпоративщины
-- Аудитория: по channel-dna-linkedin.md
+- Аудитория: по `content/channel-dna-linkedin.md`
 
 Хук — выбери один тип:
 - Конфликт: "Все говорят про AI. Мало кто реально запустил."

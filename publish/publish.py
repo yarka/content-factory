@@ -3,9 +3,9 @@
 Публикация поста в Telegram.
 
 Использование:
-  python3 publish.py                        # staging (по умолчанию)
-  python3 publish.py --env production       # прод
-  python3 publish.py --file output/posts/2026-02-26-massazh.md
+  python3 publish/publish.py                        # staging (по умолчанию)
+  python3 publish/publish.py --env production       # прод
+  python3 publish/publish.py --file output/posts/2026-02-26-massazh.md
 """
 
 import argparse
@@ -15,7 +15,7 @@ import requests
 import re
 from pathlib import Path
 
-CONFIG_PATH = Path(__file__).parent / "config/config.yaml"
+CONFIG_PATH = Path(__file__).resolve().parents[1] / "config/config.yaml"
 
 
 def load_config():

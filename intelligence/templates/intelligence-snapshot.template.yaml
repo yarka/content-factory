@@ -3,6 +3,8 @@
 stable_snapshot_id: intel-snapshot-YYYYMMDD
 account_slug: your-account-slug
 snapshot_date: YYYY-MM-DD
+readiness_status: warning_needs_enrichment
+recommendation: needs_enrichment
 
 direct_competitor_discovery:
   source_families:
@@ -63,3 +65,5 @@ fallback_notes:
 upstream_artifacts:
   discovered_sources_path: intelligence/accounts/<account-slug>/discovered-sources.yaml
   evidence_log_path: intelligence/accounts/<account-slug>/evidence-log.yaml
+  coverage_report_path: intelligence/accounts/<account-slug>/coverage-report.yaml
+  research_report_path: intelligence/accounts/<account-slug>/research-report.md

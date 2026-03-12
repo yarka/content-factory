@@ -130,6 +130,19 @@
 
 ---
 
+## Позже — Repo skills / agents
+
+**Идея:** когда текущие workflow стабилизируются, вынести самые ценные роли в переиспользуемые skills / agents, чтобы ими можно было пользоваться и вне этого репозитория.
+
+**Кандидаты:**
+1. `linkedin-pilot-orchestrator` — brief → intelligence → coverage review → strategy → content handoff
+2. `trend-intelligence-researcher` — 4 search strategies, quality gate, coverage report, research report
+3. `linkedin-strategy-synthesizer` — approved snapshot → positioning → 30-day plan → post briefs
+
+**Когда делать:** после того как quality bar для Intelligence и качество Strategy стабилизируются на реальных прогонах.
+
+---
+
 ## API — статус
 
 | Площадка | API | Сложность | Статус |

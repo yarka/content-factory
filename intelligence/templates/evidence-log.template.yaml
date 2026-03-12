@@ -5,6 +5,8 @@ evidence_records:
     entity_id: ent_001
     source_family: linkedin
     source_type: post
+    source_origin: public_web_discovery
+    acquisition_mode: exa_mcp
     strategy_type: direct_competitor_discovery
     url: ""
     title: Example post
@@ -20,6 +22,8 @@ evidence_records:
     entity_id: ent_002
     source_family: reddit
     source_type: discussion
+    source_origin: public_web_discovery
+    acquisition_mode: web_search
     strategy_type: audience_pain_discovery
     url: ""
     title: Example thread

@@ -18,9 +18,21 @@ search_constraints:
   language: english
   freshness_window_days: 90
   relevance_bias: trust_building_patterns
+  preferred_discovery_engine: exa_mcp
+  fallback_discovery_engine: web_search
 
 manual_context_sources:
   - intelligence/accounts/<account-slug>/manual-context.md
+
+external_data_sources:
+  - source_id: src_001
+    source_family: private_market_signal
+    source_origin: upwork_manual_export
+    acquisition_mode: manual
+    source_path: /absolute/path/to/manual-dataset
+    usage_scope:
+      - audience_pain_discovery
+      - winning_content_discovery
 
 source_tiers:
   tier_1:

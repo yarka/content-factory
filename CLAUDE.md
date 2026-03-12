@@ -3,16 +3,23 @@
 Модульный AI-пайплайн:
 
 ```
-Setup -> Intelligence -> Strategy -> Content -> Publish
+Setup -> Orchestrator -> Intelligence -> Strategy -> Content -> Publish
 ```
 
 ## Архитектура
 
 ```
 content/channel-dna-linkedin.md
-intelligence/accounts/*
+orchestrator/accounts/*
          │
          ▼
+┌─────────────────────┐
+│ Orchestrator Module │
+│ Guided Pilot Flow   │
+│ Quality Gate        │
+│ Handoff             │
+└──────────┬──────────┘
+           ▼
 ┌─────────────────────┐
 │ Intelligence Module │
 │ Discovery           │
@@ -46,9 +53,12 @@ intelligence/accounts/*
 
 | Trigger | Файл | Что делает |
 |---------|------|------------|
+| `start linkedin pilot` | `orchestrator/workflows/start-linkedin-pilot.md` | Ведет пользователя через brief, intelligence, quality gate и strategy handoff |
+| `continue linkedin pilot` | `orchestrator/workflows/continue-linkedin-pilot.md` | Продолжает pilot flow по сохраненному status |
+| `review intelligence coverage` | `orchestrator/workflows/review-intelligence-coverage.md` | Показывает coverage и gaps перед strategy |
 | `setup`, `setup linkedin`, `настрой канал` | `setup/bootstrap.md` | Bootstrap локального конфига и DNA |
-| `run intelligence` | `intelligence/workflows/discovery.md` | Строит discovered sources, evidence log и approved snapshot |
-| `refresh intelligence` | `intelligence/workflows/refresh.md` | Обновляет discovery artifacts и snapshot |
+| `run intelligence` | `intelligence/workflows/discovery.md` | Строит и сохраняет discovered sources, evidence log, approved snapshot, coverage report и research report |
+| `refresh intelligence` | `intelligence/workflows/refresh.md` | Обновляет и сохраняет discovery artifacts и snapshot |
 | `linkedin strategy` | `strategy/workflows/linkedin-strategist.md` | Читает approved snapshot и строит strategy pack, plan, briefs |
 | `refresh linkedin strategy` | `strategy/workflows/refresh.md` | Строит strategy delta без silent overwrite |
 | идея для поста, `напиши пост` | `content/workflows/core-pipeline.md` | Полный content pipeline |
@@ -63,6 +73,7 @@ intelligence/accounts/*
 
 | Путь | Назначение |
 |------|------------|
+| `orchestrator/` | guided pilot flow, quality gates, handoff |
 | `content/` | DNA, writing guide, ai terms, pipeline, QA, adapters |
 | `intelligence/` | discovery, evidence, snapshots |
 | `strategy/` | synthesis, planning, refresh |
@@ -75,6 +86,7 @@ intelligence/accounts/*
 
 - `content` отвечает только за создание контента
 - `publish` отвечает только за доставку
+- `orchestrator` ведет пользователя по фазам и решает handoff
 - `strategy` не делает discovery, а читает approved snapshot
 - `intelligence` не пишет контент и не обновляет strategy artifacts напрямую
 - Читай `content/channel-dna.md` перед каждым постом

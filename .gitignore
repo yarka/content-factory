@@ -25,6 +25,10 @@ strategy/accounts/*
 intelligence/accounts/*
 !intelligence/accounts/.gitkeep
 
+# Личные orchestrator artifacts
+orchestrator/accounts/*
+!orchestrator/accounts/.gitkeep
+
 # OS
 .DS_Store
 **/.DS_Store

@@ -9,22 +9,37 @@ Use this checklist when validating the new `intelligence/` workspace.
 
 2. Business-brief-only happy path
    Input only `source-config.yaml` plus optional empty manual context.
-   Expected: the workflow still creates discovered sources, evidence log, and intelligence snapshot.
+   Expected: the workflow still creates discovered sources, evidence log, intelligence snapshot, coverage report, and research report.
 
-3. Four search strategies stay distinct
+3. Discovery artifacts are persisted automatically
+   Expected: `run intelligence` saves `discovered-sources.yaml`, `evidence-log.yaml`, `intelligence-snapshot.yaml`, `coverage-report.yaml`, and `research-report.md` before reporting findings in chat.
+
+4. Four search strategies stay distinct
    Expected: direct competitor discovery, adjacent analog discovery, audience pain discovery, and winning-content discovery are preserved as separate labels in the artifacts.
 
-4. Tier 1 source sufficiency
+5. Tier 1 source sufficiency
    Expected: LinkedIn, Reddit, and websites/blogs are enough to produce a useful snapshot for the AI consulting pilot.
 
-5. Weak direct competitor discovery
+6. Practical V1 quality bar
+   Expected: the pass targets at least `12-15` discovered entities, `25-40` evidence records, all four search strategies, and 3 source families.
+
+7. Discovery engine fallback
+   Expected: the workflow prefers `Exa MCP` when available and records `web_search` when it falls back.
+
+8. Weak direct competitor discovery
    Expected: the module falls back to adjacent analogs and records the fallback explicitly.
 
-6. Discussion language capture
+9. Discussion language capture
    Expected: comment and thread language appears in normalized evidence, not only post summaries.
 
-7. Reusable-core validation
+10. Coverage status and warning behavior
+   Expected: weak passes are marked `warning_needs_enrichment`, not silently treated as complete.
+
+11. External manual datasets
+   Expected: `external_data_sources` such as `upwork_manual_export` can be referenced without copying raw files into the repo.
+
+12. Reusable-core validation
    Expected: the same templates support a second business without contract changes.
 
-8. Strategy handoff
+13. Strategy handoff
    Expected: `strategy/workflows/linkedin-strategist.md` consumes the approved intelligence snapshot instead of running source discovery itself.

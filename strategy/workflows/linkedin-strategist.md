@@ -16,9 +16,10 @@ This workflow creates strategy outputs from an approved upstream intelligence sn
 Always read first:
 1. `strategy/accounts/<account-slug>/account-profile.yaml` - the business brief
 2. `intelligence/accounts/<account-slug>/intelligence-snapshot.yaml` - the approved intelligence snapshot
-3. `content/channel-dna-linkedin.md` - voice and platform contract
-4. `content/writing-guide.md` - author voice if available
-5. `strategy/README.md` - workspace rules
+3. `intelligence/accounts/<account-slug>/coverage-report.yaml` - the intelligence quality gate when present
+4. `content/channel-dna-linkedin.md` - voice and platform contract
+5. `content/writing-guide.md` - author voice if available
+6. `strategy/README.md` - workspace rules
 
 If the account workspace does not exist, create it from `strategy/templates/`.
 
@@ -28,6 +29,7 @@ If the account workspace does not exist, create it from `strategy/templates/`.
 
 - Read the business brief and extract the offer, audience, proof assets, goal type, and CTA constraints.
 - Read the approved intelligence snapshot and treat it as the only discovery input.
+- Read the saved coverage report when present.
 - Confirm the primary platform is LinkedIn.
 - Keep `content/channel-dna-linkedin.md` as the voice contract, not the strategy database.
 
@@ -93,6 +95,7 @@ Save all artifacts to:
 - Use the approved intelligence snapshot as the upstream source of truth.
 - Avoid hard-sell CTA drift if the account goal is trust and audience.
 - If the intelligence snapshot is weak, flag it and stop short of inventing evidence.
+- If the coverage report says `warning_needs_enrichment`, carry that warning into the strategy summary instead of pretending the input was complete.
 
 ## Output
 

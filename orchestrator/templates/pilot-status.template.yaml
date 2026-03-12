@@ -1,0 +1,16 @@
+# Copy to orchestrator/accounts/<account-slug>/pilot-status.yaml
+
+account_slug: your-account-slug
+status: warning_needs_enrichment
+allowed_statuses:
+  - ready_for_strategy
+  - warning_needs_enrichment
+  - blocked_missing_brief
+next_action: add_manual_enrichment
+
+linked_artifacts:
+  source_config_path: intelligence/accounts/<account-slug>/source-config.yaml
+  intelligence_snapshot_path: intelligence/accounts/<account-slug>/intelligence-snapshot.yaml
+  coverage_report_path: intelligence/accounts/<account-slug>/coverage-report.yaml
+  research_report_path: intelligence/accounts/<account-slug>/research-report.md
+  strategy_pack_path: strategy/accounts/<account-slug>/strategy-pack.md

@@ -8,6 +8,8 @@ discovered_entities:
     name: Example Competitor
     source_family: linkedin
     source_type: profile
+    source_origin: public_web_discovery
+    acquisition_mode: exa_mcp
     strategy_type: direct_competitor_discovery
     url: ""
     relevance_reason: Similar offer and similar audience
@@ -17,6 +19,8 @@ discovered_entities:
     name: Example Founder Community
     source_family: reddit
     source_type: subreddit
+    source_origin: public_web_discovery
+    acquisition_mode: web_search
     strategy_type: audience_pain_discovery
     url: ""
     relevance_reason: Strong discussion density around buyer pain language

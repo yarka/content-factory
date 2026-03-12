@@ -21,6 +21,27 @@ Always read first:
 
 If the account workspace does not exist, create it from `intelligence/templates/`.
 
+## Quality bar
+
+Use the `Practical V1` quality bar for initial strategy work:
+- target `12-15 discovered entities`
+- target `25-40 evidence records`
+- preserve all four search strategies
+- cover at least 3 source families
+- aim for `4+` direct competitors when available
+- aim for `4+` adjacent analogs
+- aim for `8+` buyer pain signals
+- aim for `8+` winning content examples
+
+If the pass misses the quality bar, mark the saved outputs as `warning_needs_enrichment` instead of pretending the research is complete.
+
+## Discovery engine
+
+- `Exa MCP` is the preferred discovery engine for public-web discovery when available.
+- `web search` is the Web search fallback when `Exa MCP` is unavailable in the runtime.
+- Record the actual acquisition mode used in `discovered-sources.yaml` and `evidence-log.yaml`.
+- Keep source family and acquisition mode separate. Example: `source_family: reddit`, `acquisition_mode: exa_mcp`.
+
 ## Tier 1 sources
 
 Use Tier 1 sources first:
@@ -63,21 +84,38 @@ Keep these as extension seams unless the user explicitly supplies them:
 
 ## Normalization
 
-Write three artifacts:
+Write five artifacts:
 - `discovered-sources.yaml`
 - `evidence-log.yaml`
 - `intelligence-snapshot.yaml`
+- `coverage-report.yaml`
+- `research-report.md`
+
+Always save the discovery artifacts to the account workspace before returning a summary in chat.
+If an external dataset is used, preserve its source metadata in the saved artifacts instead of keeping it only in the narrative response.
 
 Every evidence record must keep:
 - stable evidence ID
 - source family
 - source type
-- strategy type
-- entity ID
-- URL
-- summary
+ - source origin
+ - acquisition mode
+ - strategy type
+ - entity ID
+ - URL
+ - summary
 - confidence
 - discussion language
+
+After normalization:
+1. dedupe and cluster similar evidence
+2. compute coverage by strategy and source family
+3. compute confidence summary and cross-source agreement
+4. assign one readiness status:
+   - `ready_for_strategy`
+   - `warning_needs_enrichment`
+   - `blocked_missing_brief`
+5. save both `coverage-report.yaml` and `research-report.md`
 
 ## Guardrails
 
@@ -85,6 +123,9 @@ Every evidence record must keep:
 - If direct competitors are weak, fall back to adjacent analogs and record the fallback.
 - Keep Tier 1 coverage explicit even if Tier 2 sources are mentioned.
 - Do not write strategy artifacts in this workflow.
+- If coverage is weak, do not say `research complete`.
+- Return a warning, enumerate what is missing, and propose manual enrichment.
+- LinkedIn-native evidence is desirable but not a hard blocker when cross-source coverage is strong.
 
 ## Output
 
@@ -92,3 +133,4 @@ Return:
 - what entities were discovered
 - which sources produced the strongest evidence
 - where the approved intelligence snapshot was saved
+- where `coverage-report.yaml` and `research-report.md` were saved

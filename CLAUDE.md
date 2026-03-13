@@ -63,6 +63,7 @@ orchestrator/accounts/*
 | `refresh linkedin strategy` | `strategy/workflows/refresh.md` | Строит strategy delta без silent overwrite |
 | идея для поста, `напиши пост` | `content/workflows/core-pipeline.md` | Полный content pipeline |
 | `write from strategy brief` | `content/workflows/core-pipeline.md` | Пишет пост из сохранённого brief |
+| `linkedin visual` | `content/workflows/linkedin-visual.md` | Строит visual reference board, visual DNA и рендерит LinkedIn card |
 | `в телеграм`, `telegram` | `content/workflows/adapters/telegram.md` | Telegram адаптер |
 | `в linkedin` | `content/workflows/adapters/linkedin.md` | LinkedIn адаптер |
 | `в threads` | `content/workflows/adapters/threads.md` | Threads адаптер |
@@ -80,7 +81,7 @@ orchestrator/accounts/*
 | `publish/` | delivery, publish adapters, scripts |
 | `setup/` | bootstrap layer |
 | `config/config.yaml` | токены и окружения |
-| `output/posts/` | готовые артефакты для публикации |
+| `content/accounts/<account-slug>/posts/` | готовые артефакты постов и visual workspace |
 
 ## Правила
 

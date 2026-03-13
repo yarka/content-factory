@@ -46,6 +46,13 @@ output:
 
 Прочитай соответствующий adapter файл и следуй инструкциям.
 
+## Artifact Input
+
+Canonical input artifact:
+- `content/accounts/<account-slug>/posts/YYYY-MM-DD-slug.md`
+
+The publish layer accepts any explicit `--file` path, but the repo should treat the per-account content workspace as the primary source of approved posts.
+
 ## Validation
 
 Перед публикацией проверь:

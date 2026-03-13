@@ -19,6 +19,8 @@ orchestrator/accounts/<account-slug>/
 
 Use templates from `orchestrator/templates/` when creating a new account workspace.
 
+`pilot-status.yaml` is the persisted state for the guided flow. On the same machine, a new session should resume from this file instead of relying on chat memory.
+
 ## Responsibilities
 
 - collect or validate the business brief
@@ -28,6 +30,9 @@ Use templates from `orchestrator/templates/` when creating a new account workspa
 - decide whether the flow is `ready_for_strategy`, `warning_needs_enrichment`, or `blocked_missing_brief`
 - hand off to `strategy` when appropriate
 - suggest the next brief to write in `content`
+- proactively recommend the highest-leverage next step and explain the reason instead of waiting for the user to guess the flow
+- after post approval, push the user toward visual generation and publish instead of ending at text
+- recompute the next step from saved artifacts and publication state instead of trusting a stale `next_action`
 
 ## Recommended commands
 

@@ -158,7 +158,7 @@ blog:
 ## After Save
 
 ```bash
-git add output/posts/{slug}.md
+git add content/accounts/<account-slug>/posts/{slug}.md
 git commit -m "feat(blog): add {title}"
 git push
 ```

@@ -23,7 +23,7 @@ cp config/config.example.yaml config/config.yaml
 ```yaml
 output:
   adapter: file-only
-  output_dir: output/posts
+  output_dir: content/accounts/default/posts
 
 content:
   min_words: 600
@@ -91,7 +91,7 @@ my-blog-pipeline/
 │   ├── config.example.yaml
 │   └── config.yaml             # ← твой конфиг (gitignored)
 │
-└── output/posts/               # ← сюда сохраняются статьи
+└── content/accounts/default/posts/  # ← сюда сохраняются статьи
 ```
 
 ## Troubleshooting

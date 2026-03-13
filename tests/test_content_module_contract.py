@@ -9,6 +9,7 @@ class ContentModuleContractTests(unittest.TestCase):
     def test_content_module_files_exist(self) -> None:
         expected_paths = [
             "content/README.md",
+            "content/accounts/.gitkeep",
             "content/channel-dna.md",
             "content/channel-dna-linkedin.md",
             "content/channel-dna.template.md",
@@ -19,10 +20,12 @@ class ContentModuleContractTests(unittest.TestCase):
             "content/workflows/fact-check.md",
             "content/workflows/deaify-text.md",
             "content/workflows/blog-post.md",
+            "content/workflows/linkedin-visual.md",
             "content/workflows/telegram-post.md",
             "content/workflows/adapters/telegram.md",
             "content/workflows/adapters/linkedin.md",
             "content/workflows/adapters/threads.md",
+            "content/templates/linkedin-visual-card.html",
         ]
 
         for relative_path in expected_paths:
@@ -36,9 +39,51 @@ class ContentModuleContractTests(unittest.TestCase):
             "content/writing-guide.md",
             "strategy/accounts/<account-slug>/content-plan.yaml",
             "intelligence/accounts/<account-slug>/intelligence-snapshot.yaml",
+            "content/accounts/<account-slug>/posts/",
+            "Saved to content/accounts/<account-slug>/posts/",
+            "generate/refine LinkedIn visual",
+            "review final text once with visual context",
+            "publish",
             "content/workflows/fact-check.md",
             "content/workflows/deaify-text.md",
             "content/workflows/adapters/",
+            "human_in_the_loop",
+            "fully_automatic",
+            "Depth Check",
+            "If `human_in_the_loop` is enabled",
+            "Quality Report",
+            "fact-check",
+            "deaify",
+            "what changed",
+        ]
+
+        for snippet in required_snippets:
+            self.assertIn(snippet, text)
+
+        self.assertNotIn("output/posts/", text)
+
+    def test_config_example_exposes_content_workflow_mode(self) -> None:
+        text = (ROOT / "config/config.example.yaml").read_text()
+
+        required_snippets = [
+            "workflow_mode:",
+            "human_in_the_loop",
+            "fully_automatic",
+        ]
+
+        for snippet in required_snippets:
+            self.assertIn(snippet, text)
+
+    def test_linkedin_visual_workflow_requires_manual_references_before_visual_dna(self) -> None:
+        text = (ROOT / "content/workflows/linkedin-visual.md").read_text()
+
+        required_snippets = [
+            "visual-reference-board.md",
+            "visual-dna.md",
+            "manual reference pack",
+            "Do not lock a color/style direction before references exist",
+            "content/accounts/<account-slug>/visuals/linkedin/",
+            "single-image editorial card",
         ]
 
         for snippet in required_snippets:

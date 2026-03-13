@@ -4,11 +4,12 @@ plan_date: YYYY-MM-DD
 account_slug: your-account-slug
 primary_platform: LinkedIn
 plan_window_days: 30
-posting_cadence_per_week: 3
+posting_cadence_per_week: 2_to_3
+artifact_or_video_posts_per_week: 1
 
 weekly_themes:
   - week: 1
-    theme: Why founders automate the wrong bottlenecks
+    theme: Why founders bottleneck brand-to-demand without a system
     goal: trust_builder
 
 post_briefs:

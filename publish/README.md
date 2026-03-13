@@ -10,7 +10,7 @@ It is responsible for:
 
 ## Inputs
 
-- approved post artifact from `output/posts/`
+- approved post artifact from `content/accounts/<account-slug>/posts/`
 - `config/config.yaml`
 
 ## Outputs

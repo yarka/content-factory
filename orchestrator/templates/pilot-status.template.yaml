@@ -6,7 +6,15 @@ allowed_statuses:
   - ready_for_strategy
   - warning_needs_enrichment
   - blocked_missing_brief
+last_completed_action: run_intelligence
 next_action: add_manual_enrichment
+recommended_step_reason: Explain why this next action is the highest-leverage move now.
+
+published_artifacts:
+  latest_post_path: ""
+  latest_visual_path: ""
+  latest_published_platform: ""
+  latest_published_at: ""
 
 linked_artifacts:
   source_config_path: intelligence/accounts/<account-slug>/source-config.yaml

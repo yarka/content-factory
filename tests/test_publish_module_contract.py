@@ -28,6 +28,7 @@ class PublishModuleContractTests(unittest.TestCase):
             "publish/workflows/adapters/file-only.md",
             "publish/workflows/adapters/custom.md",
             "config/config.yaml",
+            "content/accounts/<account-slug>/posts/",
         ]
 
         for snippet in required_snippets:
@@ -38,8 +39,16 @@ class PublishModuleContractTests(unittest.TestCase):
         linkedin_script = (ROOT / "publish/publish_linkedin.py").read_text()
 
         self.assertIn('Path(__file__).resolve().parents[1] / "config/config.yaml"', telegram_script)
-        self.assertIn("output/posts", telegram_script)
-        self.assertIn("output/posts", linkedin_script)
+        self.assertNotIn("output/posts", telegram_script)
+        self.assertNotIn("output/posts", linkedin_script)
+
+    def test_publish_docs_reference_content_account_artifacts_not_output_posts(self) -> None:
+        readme = (ROOT / "publish/README.md").read_text()
+        file_only = (ROOT / "publish/workflows/adapters/file-only.md").read_text()
+
+        for text in [readme, file_only]:
+            self.assertIn("content/accounts/<account-slug>/posts/", text)
+            self.assertNotIn("output/posts", text)
 
     def test_old_publish_paths_are_removed(self) -> None:
         old_paths = [

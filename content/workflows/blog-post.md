@@ -134,7 +134,7 @@ Research: {результат Phase 2}
 Прочитай `publish/workflows/publish.md` — он определит adapter из `config/config.yaml`:
 
 - `telegram` — добавит в очередь Telegram канала
-- `file-only` — сохранит в папку output/
+- `file-only` — сохранит в per-account content workspace
 - `custom` — пользовательский adapter
 
 ---

@@ -3,7 +3,7 @@
 Публикация поста в LinkedIn через Chrome.
 
 Использование:
-  python3 publish/publish_linkedin.py --file output/posts/YYYY-MM-DD-slug.md
+  python3 publish/publish_linkedin.py --file content/accounts/ai-consulting-pilot/posts/YYYY-MM-DD-slug.md
   python3 publish/publish_linkedin.py --setup   # первичный логин
 """
 
@@ -119,7 +119,7 @@ def main():
         return
 
     if not args.file:
-        print("❌ Укажи файл: --file output/posts/FILE.md")
+        print("❌ Укажи файл: --file content/accounts/<account-slug>/posts/FILE.md")
         sys.exit(1)
 
     post_text = read_post(args.file)

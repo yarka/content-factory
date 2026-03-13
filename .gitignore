@@ -8,14 +8,14 @@ content/channel-dna.md
 content/channel-dna-linkedin.md
 content/channel-dna-*.md
 content/writing-guide.md
+content/accounts/*
+!content/accounts/.gitkeep
 
 # Личные планы
 docs/plans/
 
-# Личный output
-output/posts/*.md
-output/*.docx
-output/*.js
+# Legacy local output
+output/
 
 # Личные strategy artifacts
 strategy/accounts/*

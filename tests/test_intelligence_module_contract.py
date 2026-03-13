@@ -43,6 +43,20 @@ class IntelligenceModuleContractTests(unittest.TestCase):
         for field in required_fields:
             self.assertIn(field, text)
 
+    def test_source_config_template_supports_manual_competitor_research_pack(self) -> None:
+        text = (ROOT / "intelligence/templates/source-config.template.yaml").read_text()
+
+        required_snippets = [
+            "manual_competitor_research_pack",
+            "profile links",
+            "screenshots",
+            "funnel observations",
+            "resource/lead magnet breakdowns",
+        ]
+
+        for snippet in required_snippets:
+            self.assertIn(snippet, text)
+
     def test_evidence_log_template_requires_normalized_evidence_records(self) -> None:
         text = (ROOT / "intelligence/templates/evidence-log.template.yaml").read_text()
 
@@ -150,6 +164,18 @@ class IntelligenceModuleContractTests(unittest.TestCase):
             "research-report.md",
             "ready_for_strategy",
             "warning_needs_enrichment",
+        ]
+
+        for snippet in required_snippets:
+            self.assertIn(snippet, text)
+
+    def test_readme_documents_manual_competitor_research_pack(self) -> None:
+        text = (ROOT / "intelligence/README.md").read_text()
+
+        required_snippets = [
+            "manual_competitor_research_pack",
+            "manual competitor research",
+            "what to copy vs what to reject",
         ]
 
         for snippet in required_snippets:

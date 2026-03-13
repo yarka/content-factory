@@ -5,7 +5,7 @@
 Использование:
   python3 publish/publish.py                        # staging (по умолчанию)
   python3 publish/publish.py --env production       # прод
-  python3 publish/publish.py --file output/posts/2026-02-26-massazh.md
+  python3 publish/publish.py --file content/accounts/ai-consulting-pilot/posts/2026-02-26-massazh.md
 """
 
 import argparse

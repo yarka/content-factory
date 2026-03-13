@@ -28,6 +28,7 @@ If the account workspace does not exist, create it from `strategy/templates/`.
 ### Phase 1: Read the business brief
 
 - Read the business brief and extract the offer, audience, proof assets, goal type, and CTA constraints.
+- Read the operator background, orchestrator identity, unfair advantages, mission, values, and change philosophy from the brief or manual context when present.
 - Read the approved intelligence snapshot and treat it as the only discovery input.
 - Read the saved coverage report when present.
 - Confirm the primary platform is LinkedIn.
@@ -44,6 +45,15 @@ Read the approved Pattern Library and competitor universe from the intelligence 
 - discussion language
 
 If signals conflict, prefer trust-building patterns and soft CTA styles for trust-and-audience accounts.
+If manual competitor research is present in the intelligence inputs or strategy notes, extract:
+- packaging patterns worth adapting
+- patterns to reject because they break authenticity
+- profile, featured, and lead-magnet implications
+
+Preserve the distinction between:
+- media engine archetypes
+- conversion-first operator archetypes
+- attention machine archetypes
 
 ### Phase 3: Build Strategy Pack
 
@@ -51,12 +61,17 @@ Use the account profile, LinkedIn DNA, and Pattern Library to write the Strategy
 - positioning statement
 - audience lens
 - competitor gap map
+- profile packaging recommendations
+- featured asset recommendations
 - funnel and content model
 - 3-5 pillars
 - CTA rules
+- content series map
+- what to copy vs what to reject
 - posting cadence
 
 Do not copy competitor phrasing. Translate patterns into the account's own angle.
+Preserve the account's own mission, values, and orchestrator worldview so the strategy does not read like a generic market summary.
 
 ### Phase 4: Build 30-Day Plan
 
@@ -70,6 +85,13 @@ Each brief must include:
 - soft CTA style
 - supporting evidence IDs
 - strategy constraints
+
+Shape the plan so the feed mix stays coherent:
+- 50 percent founder bottlenecks, systems, and execution clarity
+- 30 percent brand-to-demand systems and content engine design
+- 20 percent live builds, walkthroughs, or artifact proof
+
+Target a cadence of `2-3 posts per week` plus `1 artifact or video walkthrough per week`.
 
 ### Phase 5: Build Image Briefs
 

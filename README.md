@@ -102,14 +102,15 @@ setup linkedin             -> bootstrap LinkedIn DNA only
 run intelligence           -> build and save discovered sources + evidence log + snapshot + quality reports
 linkedin strategy          -> build strategy pack + 30-day plan from snapshot
 write from strategy brief  -> write a post from an approved brief
+linkedin visual           -> build reference board / visual DNA / one LinkedIn card
 ```
 
 Publishing examples:
 
 ```bash
-python3 publish/publish.py --env staging --file output/posts/YYYY-MM-DD-slug.md
-python3 publish/publish.py --env production --file output/posts/YYYY-MM-DD-slug.md
-python3 publish/publish_linkedin.py --file output/posts/YYYY-MM-DD-slug.md
+python3 publish/publish.py --env staging --file content/accounts/<account-slug>/posts/YYYY-MM-DD-slug.md
+python3 publish/publish.py --env production --file content/accounts/<account-slug>/posts/YYYY-MM-DD-slug.md
+python3 publish/publish_linkedin.py --file content/accounts/<account-slug>/posts/YYYY-MM-DD-slug.md
 ```
 
 ## Triggers
@@ -126,6 +127,7 @@ python3 publish/publish_linkedin.py --file output/posts/YYYY-MM-DD-slug.md
 | `refresh linkedin strategy` | Recompute strategy deltas from refreshed intelligence |
 | `I want to write about X` | Run the content pipeline from an idea |
 | `write from strategy brief` | Run the content pipeline from a saved brief |
+| `linkedin visual` | Build LinkedIn visual artifacts from references and an approved post |
 | `в телеграм` / `в linkedin` | Run the relevant content adapter |
 | `деаишь этот текст: ...` | Run de-AI-fy only |
 | `publish` | Route to the publish module |
@@ -135,12 +137,14 @@ python3 publish/publish_linkedin.py --file output/posts/YYYY-MM-DD-slug.md
 ```text
 ├── content/
 │   ├── README.md
+│   ├── accounts/              # local, gitignored
 │   ├── channel-dna.md
 │   ├── channel-dna-linkedin.md
 │   ├── channel-dna.template.md
 │   ├── writing-guide.md
 │   ├── writing-guide.template.md
 │   ├── ai-terms-ru.md
+│   ├── templates/
 │   └── workflows/
 ├── orchestrator/
 │   ├── README.md
@@ -166,14 +170,14 @@ python3 publish/publish_linkedin.py --file output/posts/YYYY-MM-DD-slug.md
 │   ├── README.md
 │   └── bootstrap.md
 ├── config/
-└── output/posts/
 ```
 
 ## Local Artifact Policy
 
-- `content/channel-dna*.md` and `content/writing-guide.md` are local and gitignored.
+- `content/channel-dna*.md`, `content/writing-guide.md`, and `content/accounts/*` are local and gitignored.
 - `intelligence/accounts/*`, `strategy/accounts/*`, and `orchestrator/accounts/*` are local and gitignored.
 - Tracked files are templates, workflows, docs, and tests.
+- These local account workspaces are also how the system persists progress between sessions on the same machine. The main resume file for the guided flow is `orchestrator/accounts/<account-slug>/pilot-status.yaml`.
 
 ## No-Claude fallback
 

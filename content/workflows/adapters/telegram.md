@@ -66,6 +66,6 @@ TELEGRAM
 
 После одобрения:
 ```bash
-python3 publish/publish.py --file output/posts/{дата}-{slug}.md
-python3 publish/publish.py --file output/posts/{дата}-{slug}.md --env production
+python3 publish/publish.py --file content/accounts/{account-slug}/posts/{дата}-{slug}.md
+python3 publish/publish.py --file content/accounts/{account-slug}/posts/{дата}-{slug}.md --env production
 ```

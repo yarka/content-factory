@@ -28,6 +28,7 @@ Use templates from `strategy/templates/` when creating a new account.
 - Treat `intelligence/accounts/<account-slug>/intelligence-snapshot.yaml` as the approved intelligence snapshot.
 - Treat `content-plan.yaml` as the approved source for post briefs and image briefs.
 - Treat `refresh-report.md` as a delta report only. Never silently overwrite approved strategy.
+- Treat profile packaging, featured assets, and content series as first-class strategy outputs when competitor research is available.
 
 ## Recommended commands
 

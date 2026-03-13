@@ -2,30 +2,32 @@
 
 account_slug: your-account-slug
 business_name: Your Business Name
-business_category: AI consulting
+business_category: founder operating systems and AI orchestration
 primary_platform: LinkedIn
 goal_type: trust_and_audience
 
 audience:
-  primary_icp: founders and operators evaluating AI adoption
-  secondary_icp: consultants and AI builders
+  primary_icp: founders with digital products using personal brand for distribution
+  secondary_icp: founder-led B2B operators, consultants, and AI builders
   pains:
-    - unclear AI roadmap
-    - low confidence in implementation
+    - inconsistent demand from personal brand
+    - founder context trapped in the founder's head
+    - unclear system for content, distribution, and execution
   desired_outcomes:
-    - practical AI use cases
-    - trusted partner shortlist
+    - brand_to_demand system
+    - founder_os_audit
+    - trusted systems partner shortlist
 
 offer_ladder:
   - stage: lead_magnet
-    offer: 30-minute free intro call
+    offer: Founder OS / AI Orchestration Audit call
     desired_action: book a call
   - stage: paid_offer
-    offer: AI consulting engagement
+    offer: Founder systems and brand-to-demand implementation
     desired_action: start a paid project
 
 lead_magnet:
-  name: 30-minute free intro call
+  name: 30-minute Founder OS / AI Orchestration Audit
   call_to_action: soft invitation after trust is built
 
 proof_assets:
@@ -37,6 +39,25 @@ proof_assets:
     title: Personal operating lesson
     summary: Replace with your most credible story asset.
     link: ""
+
+positioning_seed:
+  systems_orchestrator_identity: Founder Systems Orchestrator
+  orchestration_architect_identity: AI Orchestration Architect for Founders
+  founder_background: Replace with the operating, engineering, or scaling background that makes this account credible.
+  unfair_advantages:
+    - Replace with your strongest operating advantage
+    - Replace with your strongest technical or domain advantage
+  public_proof_points:
+    - Replace with one specific public proof point
+    - Replace with another public proof point
+  entry_promise: Turn personal brand into demand through systems, clarity, and execution architecture.
+
+worldview_and_values:
+  mission: Replace with the change you want your work and content to create.
+  values:
+    - Replace with one value that should shape content and consulting
+    - Replace with another value that should shape content and consulting
+  change_philosophy: Replace with how you believe AI adoption should happen inside a business.
 
 tone_constraints:
   desired_traits:
@@ -54,7 +75,8 @@ manual_context_sources:
     note: Optional extra context, competitor notes, UVP, or reference posts.
 
 strategy_defaults:
-  posting_cadence_per_week: 3
-  pillar_count_target: 4
+  posting_cadence_per_week: 2_to_3
+  artifact_or_video_posts_per_week: 1
+  pillar_count_target: 5
   auto_discovery_enabled: true
   refresh_mode: manual

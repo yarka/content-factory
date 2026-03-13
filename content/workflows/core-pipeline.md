@@ -49,6 +49,25 @@ globs:
 
 **Всегда читай `content/channel-dna.md` перед запуском.**
 
+## Workflow Mode
+
+Read `config/config.yaml` when available and check `content.workflow_mode`.
+
+Allowed modes:
+- `human_in_the_loop`
+- `fully_automatic`
+
+Default to `human_in_the_loop` when the config is missing.
+
+If `human_in_the_loop` is enabled:
+- do a Depth Check before hooks when the idea is still forming
+- ask for the author's angle, concrete example, or proof asset when those are missing
+- prefer short checkpoints over guessing
+
+If `fully_automatic` is enabled:
+- ask only when a factual gap would make the draft misleading
+- otherwise synthesize from the brief, research, and saved context directly
+
 ---
 
 ## Phase 1: Questions
@@ -68,6 +87,11 @@ globs:
 
 Если платформа не указана — спроси. Это нужно для адаптера на выходе.
 
+Если `human_in_the_loop` включён:
+- не перескакивай сразу к хукам, если мысль ещё сырая
+- сначала помоги автору докрутить angle, proof и сцену
+- веди процесс как editor, а не как blind generator
+
 ---
 
 ### Depth Check (перед заголовком)
@@ -85,6 +109,13 @@ globs:
 - **Ощущение:** "Что читатель должен почувствовать после? 'Я не один' / 'хочу попробовать' / 'задумался'?"
 
 ⛔ СТОП. Не генерируй заголовки пока не получил ответы.
+
+Если `fully_automatic` включён и brief already has:
+- clear angle
+- proof asset
+- supporting evidence
+
+то Depth Check можно пропустить.
 
 ---
 
@@ -181,6 +212,23 @@ globs:
 
 После deaify → **Core Draft готов**.
 
+## Phase 5.5: Quality Report
+
+После черновика не молчи о качестве.
+
+Всегда коротко сообщай:
+- был ли `fact-check`
+- был ли `deaify`
+- what changed after critic pass
+- остались ли сомнения или слабые места
+
+Формат короткий:
+- `Fact-check: ...`
+- `Deaify: ...`
+- `What changed: ...`
+
+Даже если правок мало, дай пользователю явный сигнал, что текст прошёл quality pass.
+
 ---
 
 ## Phase 6: Выбор адаптера
@@ -202,11 +250,29 @@ globs:
 
 ## Phase 7: Save
 
-After the user approves the final post — save it automatically to `output/posts/YYYY-MM-DD-slug.md`.
+After the user approves the final post — save it automatically to `content/accounts/<account-slug>/posts/YYYY-MM-DD-slug.md`.
 
-Do not ask. Just save and confirm: "Saved to output/posts/YYYY-MM-DD-slug.md"
+Use the active pilot account slug when the post came from strategy/orchestrator.
+If the account slug is still unknown, ask once before saving.
+
+Do not ask for save confirmation. Just save and confirm: "Saved to content/accounts/<account-slug>/posts/YYYY-MM-DD-slug.md"
 
 Slug: short English kebab-case summary of the topic (e.g. `founders-competitor-agent-linkedin`).
+
+## Phase 8: Proactive Next Step
+
+After save, do not stop passively.
+
+Recommend the next best action in this order:
+1. generate/refine LinkedIn visual
+2. review final text once with visual context
+3. publish
+
+Return:
+- saved path
+- recommended next step
+- why this is the best move now
+- 1-3 concrete options the user can take immediately
 
 ---
 
@@ -219,5 +285,7 @@ Slug: short English kebab-case summary of the topic (e.g. `founders-competitor-a
 - [ ] Phase 3.2: core draft написан
 - [ ] Phase 4: fact-check пройден
 - [ ] Phase 5: deaify пройден
+- [ ] Phase 5.5: quality report показан пользователю
 - [ ] Phase 6: адаптер запущен
-- [ ] Phase 7: сохранён в output/posts/
+- [ ] Phase 7: сохранён в content/accounts/<account-slug>/posts/
+- [ ] Phase 8: рекомендован следующий шаг

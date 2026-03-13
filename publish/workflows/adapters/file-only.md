@@ -1,16 +1,16 @@
 # File-Only Adapter
 
-Простое сохранение статьи в папку. Без внешних сервисов.
+Простое сохранение статьи в per-account workspace. Без внешних сервисов.
 
 ## Требования
 
-- Папка для output (по умолчанию `output/posts`)
+- Папка для контент-артефактов (канонически `content/accounts/<account-slug>/posts/`)
 
 ## Workflow
 
 ```
 ┌────────────────────┐
-│   Create output    │
+│ Create artifact    │
 │    directory       │
 └─────────┬──────────┘
           │
@@ -28,14 +28,14 @@
 ## Step 1: Create Directory
 
 ```bash
-mkdir -p output/posts
+mkdir -p content/accounts/<account-slug>/posts
 ```
 
 Или путь из `config.yaml`:
 ```yaml
 output:
   adapter: file-only
-  output_dir: output/posts
+  output_dir: content/accounts/<account-slug>/posts
 ```
 
 ## Step 2: Save File
@@ -58,9 +58,9 @@ output:
 ## Пример вывода
 
 ```
-Статья сохранена: output/posts/2026-01-20-my-first-post.md
+Статья сохранена: content/accounts/<account-slug>/posts/2026-01-20-my-first-post.md
 Размер: 847 слов
 
 Следующие шаги:
-- git add output/ && git commit -m "feat(blog): add post"
+- git add content/accounts/<account-slug>/posts/ && git commit -m "feat(blog): add post"
 ```

@@ -33,6 +33,7 @@ Discovery artifacts are saved by default after every `run intelligence` or `refr
 - Treat `coverage-report.yaml` as the quality gate for readiness and gaps.
 - Treat `research-report.md` as the primary human-readable research output.
 - Treat `external_data_sources` in `source-config.yaml` as supported private or manually curated datasets.
+- Treat manual competitor research as a first-class strategic input when it is saved as a `manual_competitor_research_pack`.
 
 ## Quality gate
 
@@ -66,12 +67,29 @@ Use `external_data_sources` for non-public-web inputs that still belong in disco
 Example source types:
 - `private_market_signal`
 - `manual_competitor_export`
+- `manual_competitor_research_pack`
 - `crm_win_loss_notes`
 
 Example origins:
 - `upwork_manual_export`
 - `sales_call_notes`
 - `manual_research_dump`
+- `founder_manual_research`
+
+Manual competitor research can include:
+- profile links
+- screenshots
+- positioning notes
+- funnel observations
+- featured section breakdowns
+- lead magnet breakdowns
+- what to copy vs what to reject
+
+The strategist should be able to turn this manual competitor research into:
+- packaging patterns worth adapting
+- patterns to reject because they break authenticity
+- profile and featured recommendations
+- content-series implications
 
 ## Search strategies
 

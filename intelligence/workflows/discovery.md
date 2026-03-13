@@ -20,6 +20,7 @@ Always read first:
 4. `intelligence/README.md`
 
 If the account workspace does not exist, create it from `intelligence/templates/`.
+If `external_data_sources` includes a `manual_competitor_research_pack`, treat it as a first-class strategic input alongside public-web research instead of leaving it as chat-only context.
 
 ## Quality bar
 
@@ -93,6 +94,14 @@ Write five artifacts:
 
 Always save the discovery artifacts to the account workspace before returning a summary in chat.
 If an external dataset is used, preserve its source metadata in the saved artifacts instead of keeping it only in the narrative response.
+If manual competitor research is present, preserve:
+- profile links
+- screenshots
+- notes on positioning
+- funnel observations
+- featured sections
+- resource and lead magnet breakdowns
+- what to copy vs what to reject
 
 Every evidence record must keep:
 - stable evidence ID

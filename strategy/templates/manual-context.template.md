@@ -5,11 +5,17 @@ Use this file for optional enrichment that should influence strategy but not rep
 ## What can go here
 
 - Your own competitor analysis
+- Manual competitor research packs
 - Reference posts or screenshots
 - UVP notes
+- Founder or operator background that should shape positioning
+- Mission, values, and worldview notes
 - Offer messaging
 - Private lessons from calls or workshops
 - Raw hypotheses about what should work
+- Profile headline or banner notes
+- Featured section teardown notes
+- What to copy vs what to reject from competitors
 
 ## Format
 

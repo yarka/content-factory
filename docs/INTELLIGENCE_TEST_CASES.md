@@ -38,8 +38,11 @@ Use this checklist when validating the new `intelligence/` workspace.
 11. External manual datasets
    Expected: `external_data_sources` such as `upwork_manual_export` can be referenced without copying raw files into the repo.
 
-12. Reusable-core validation
+12. Manual competitor research pack
+   Expected: a `manual_competitor_research_pack` can store profile links, screenshots, positioning notes, funnel observations, featured sections, lead magnet breakdowns, and what to copy vs what to reject.
+
+13. Reusable-core validation
    Expected: the same templates support a second business without contract changes.
 
-13. Strategy handoff
+14. Strategy handoff
    Expected: `strategy/workflows/linkedin-strategist.md` consumes the approved intelligence snapshot instead of running source discovery itself.

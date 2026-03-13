@@ -4,15 +4,30 @@ config/config.yaml
 *.env
 
 # Личные DNA-файлы — каждый хранит локально, не пушит
-channel-dna.md
-channel-dna-linkedin.md
-channel-dna-*.md
-rules/writing-guide.md
+content/channel-dna.md
+content/channel-dna-linkedin.md
+content/channel-dna-*.md
+content/writing-guide.md
+content/accounts/*
+!content/accounts/.gitkeep
 
-# Личный output
-output/posts/*.md
-output/*.docx
-output/*.js
+# Личные планы
+docs/plans/
+
+# Legacy local output
+output/
+
+# Личные strategy artifacts
+strategy/accounts/*
+!strategy/accounts/.gitkeep
+
+# Личные intelligence artifacts
+intelligence/accounts/*
+!intelligence/accounts/.gitkeep
+
+# Личные orchestrator artifacts
+orchestrator/accounts/*
+!orchestrator/accounts/.gitkeep
 
 # OS
 .DS_Store
@@ -21,6 +36,10 @@ output/*.js
 # IDE
 .idea/
 *.swp
+
+# Python cache
+__pycache__/
+*.pyc
 
 # Claude Code local settings
 .claude/settings.local.json

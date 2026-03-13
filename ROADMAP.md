@@ -85,17 +85,17 @@
 - Что за тип поста (история / инструмент / тренд / рефлексия)
 - Какой хук использован
 - Платформа, рубрика, длина
-- Пишется автоматически в `output/analytics/posts-log.md`
+- Пишется автоматически в `content/accounts/<account-slug>/analytics/posts-log.md`
 
 **Уровень 2 — Периодический разбор (раз в месяц)**
 - Триггер: `"разбор постов"`, `"что работает"`
-- Анализирует `output/posts/` и `output/analytics/posts-log.md`
+- Анализирует `content/accounts/<account-slug>/posts/` и `content/accounts/<account-slug>/analytics/posts-log.md`
 - Находит паттерны: какие хуки заходят, какие рубрики, какая длина
 - Предлагает обновить `channel-dna.md` или `writing-guide.md` на основе данных
 
 **Что нужно сделать:**
 1. Обновить frontmatter в шаблоне поста (тип, хук, платформа, рубрика)
-2. `output/analytics/posts-log.md` — журнал всех постов
+2. `content/accounts/<account-slug>/analytics/posts-log.md` — журнал всех постов
 3. `rules/analytics.md` — правило анализа паттернов
 4. Триггер в `CLAUDE.md`
 
@@ -127,6 +127,19 @@
 1. `rules/carousel.md` — разбивка поста на карточки
 2. Генерация изображений для каждой карточки
 3. Адаптеры для LinkedIn Docs и Threads carousel API
+
+---
+
+## Позже — Repo skills / agents
+
+**Идея:** когда текущие workflow стабилизируются, вынести самые ценные роли в переиспользуемые skills / agents, чтобы ими можно было пользоваться и вне этого репозитория.
+
+**Кандидаты:**
+1. `linkedin-pilot-orchestrator` — brief → intelligence → coverage review → strategy → content handoff
+2. `trend-intelligence-researcher` — 4 search strategies, quality gate, coverage report, research report
+3. `linkedin-strategy-synthesizer` — approved snapshot → positioning → 30-day plan → post briefs
+
+**Когда делать:** после того как quality bar для Intelligence и качество Strategy стабилизируются на реальных прогонах.
 
 ---
 

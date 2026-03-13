@@ -7,7 +7,7 @@ output:
   adapter: file-only
 
   # For file-only adapter: where to save posts
-  output_dir: output/posts
+  output_dir: content/accounts/default/posts
 
 # Telegram settings (for telegram adapter)
 telegram:
@@ -33,6 +33,11 @@ content:
 
   # Primary language for posts
   language: ru
+
+  # Workflow mode: human_in_the_loop | fully_automatic
+  # human_in_the_loop asks the author for angle/proof/specifics before drafting
+  # fully_automatic minimizes questions and writes from available context
+  workflow_mode: human_in_the_loop
 
 # SEO limits
 seo:

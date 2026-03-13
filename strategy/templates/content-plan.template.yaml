@@ -1,0 +1,39 @@
+# Copy to strategy/accounts/<account-slug>/content-plan.yaml
+
+plan_date: YYYY-MM-DD
+account_slug: your-account-slug
+primary_platform: LinkedIn
+plan_window_days: 30
+posting_cadence_per_week: 2_to_3
+artifact_or_video_posts_per_week: 1
+
+weekly_themes:
+  - week: 1
+    theme: Why founders bottleneck brand-to-demand without a system
+    goal: trust_builder
+
+post_briefs:
+  - brief_id: li_w1_p1
+    title: Replace with a working title
+    funnel_stage: awareness
+    pillar_tag: ai_consulting_truths
+    hook_direction: then_now_contrast
+    proof_asset: founder_story
+    soft_cta_style: open_question
+    supporting_evidence_ids:
+      - ev_01
+    strategy_constraints:
+      - trust_first
+      - no_hard_sell
+    image_brief:
+      visual_angle: founder desk with decision tension
+      composition_direction: single focal object with generous whitespace
+      text_overlay_guidance: short line only, if any
+      style_constraints:
+        - minimal
+        - editorial
+        - no generic AI robots
+      no_go_list:
+        - neon cyberpunk
+        - stock handshake
+        - crowded dashboard collage

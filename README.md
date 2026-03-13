@@ -1,195 +1,184 @@
 # AI Content Factory
 
-A personal AI pipeline for creating authentic content — not AI slop, but your voice through smart tools.
+A modular AI content system for turning business context into publishable content without losing voice.
 
 ```
-Idea → Pipeline → Draft → Publish
+Setup -> Orchestrator -> Intelligence -> Strategy -> Content -> Publish
 ```
 
-Works with Telegram and LinkedIn. Threads support in progress.
+Works with Telegram and LinkedIn today. The repo is organized by module, not by a flat rule dump.
 
----
-
-## How it works
-
-Three layers:
-
-**1. Channel DNA** — set up once. Describe your voice, audience, topics, share 10 posts you like. The system learns how you write and never forgets.
-
-**2. Core Pipeline** — platform-agnostic engine:
-Questions → Research → Write → Fact-check → Deaify
-
-**3. Adapters** — one draft, formatted for each platform:
+## Architecture
 
 ```
-     Channel DNA + Writing Guide
-               │
-               ▼
-     ┌─────────────────────┐
-     │    Core Pipeline    │
-     │  Questions          │
-     │  Research           │  ← Exa MCP or your references
-     │  Write              │  ← 3 hook options + draft
-     │  Fact-check         │  ← web search, flags ✅⚠️❌
-     │  Deaify             │  ← 4 parallel critics
-     └──────────┬──────────┘
-                │
-     ┌──────────▼──────────┐
-     │   Choose adapter    │
-     └──┬──────────────┬───┘
-        │              │
-        ▼              ▼
-   Telegram        LinkedIn
-   RU, HTML        EN, plain
-   ≤1500 chars     600–1200 chars
+┌─────────────────────────────────────────┐
+│  Setup Layer             [live]         │
+│  Bootstrap DNA and local workspaces     │
+└────────────────────┬────────────────────┘
+                     ↓
+┌────────────────────▼────────────────────┐
+│  Orchestrator Module     [live]         │
+│  Guided pilot flow and handoff          │
+└────────────────────┬────────────────────┘
+                     ↓
+┌────────────────────▼────────────────────┐
+│  Intelligence Module     [live]         │
+│  Discovery -> Evidence -> Snapshot      │
+│  Tier 1: LinkedIn, Reddit, blogs        │
+└────────────────────┬────────────────────┘
+                     ↓
+┌────────────────────▼────────────────────┐
+│  Strategy Module         [live]         │
+│  Snapshot -> Positioning -> Plan        │
+│  -> Briefs -> Refresh Delta             │
+└────────────────────┬────────────────────┘
+                     ↓
+┌────────────────────▼────────────────────┐
+│  Content Module          [live]         │
+│  DNA -> Pipeline -> QA -> Adapters      │
+└────────────────────┬────────────────────┘
+                     ↓
+┌────────────────────▼────────────────────┐
+│  Publish Module          [live]         │
+│  Routing -> Platform delivery           │
+└─────────────────────────────────────────┘
 ```
 
-The deaify step runs 4 parallel critics that strip AI fingerprints: generic phrases, rhythm problems, missing specifics, outdated facts. Plus a web-search fact-check so nothing made up slips through.
+## Modules
 
----
+**1. Setup**
+- Bootstrap local DNA, writing guide, and platform-specific context.
+- Canonical entrypoint: `setup/bootstrap.md`
 
-## Quick start
+**2. Orchestrator**
+- Guides the user through the pilot flow, quality gates, and module handoffs.
+- Canonical entrypoints:
+  - `orchestrator/workflows/start-linkedin-pilot.md`
+  - `orchestrator/workflows/continue-linkedin-pilot.md`
+  - `orchestrator/workflows/review-intelligence-coverage.md`
 
-### Requirements
-- [Claude Code](https://claude.ai/code) (recommended) **or** [claude.ai](https://claude.ai) Pro
-- Git + GitHub account
+**3. Intelligence**
+- Discovers sources, normalizes evidence, and writes approved snapshots.
+- Canonical entrypoints:
+  - `intelligence/workflows/discovery.md`
+  - `intelligence/workflows/refresh.md`
 
-### Step 1: Fork this repo
-Click **Fork** → get your own copy on GitHub.
+**4. Strategy**
+- Consumes approved intelligence snapshots and emits plans/briefs.
+- Canonical entrypoints:
+  - `strategy/workflows/linkedin-strategist.md`
+  - `strategy/workflows/refresh.md`
 
-### Step 2: Clone locally
+**5. Content**
+- Owns DNA, writing guide, core pipeline, fact-check, deaify, and platform adapters.
+- Canonical entrypoints:
+  - `content/workflows/core-pipeline.md`
+  - `content/workflows/blog-post.md`
+  - `content/workflows/telegram-post.md`
+  - `content/workflows/adapters/*.md`
+
+**6. Publish**
+- Owns publish routing, adapters, and delivery scripts.
+- Canonical entrypoints:
+  - `publish/workflows/publish.md`
+  - `publish/publish.py`
+  - `publish/publish_linkedin.py`
+
+## Quick Start
+
+**Requirements:** Claude Code, Git, Python 3
+
 ```bash
 git clone https://github.com/YOUR_USERNAME/content-factory.git
 cd content-factory
-```
-
-### Step 3: Open in Claude Code
-```bash
 claude
 ```
 
-### Step 4: Run setup
+Then:
+
+```text
+start linkedin pilot       -> guided pilot flow from brief to research to strategy handoff
+setup linkedin             -> bootstrap LinkedIn DNA only
+run intelligence           -> build and save discovered sources + evidence log + snapshot + quality reports
+linkedin strategy          -> build strategy pack + 30-day plan from snapshot
+write from strategy brief  -> write a post from an approved brief
+linkedin visual           -> build reference board / visual DNA / one LinkedIn card
 ```
-запусти setup
+
+Publishing examples:
+
+```bash
+python3 publish/publish.py --env staging --file content/accounts/<account-slug>/posts/YYYY-MM-DD-slug.md
+python3 publish/publish.py --env production --file content/accounts/<account-slug>/posts/YYYY-MM-DD-slug.md
+python3 publish/publish_linkedin.py --file content/accounts/<account-slug>/posts/YYYY-MM-DD-slug.md
 ```
-
-Claude asks 6 questions → fills `channel-dna.md` and `rules/writing-guide.md` with your voice.
-
-### Step 5: Write your first post
-```
-I want to write about [your idea]
-```
-
-The pipeline runs automatically.
-
----
-
-> **No Claude Code?** Create a Project on [claude.ai](https://claude.ai) → upload all files from the `rules/` folder + `channel-dna.template.md` → work directly in the browser. Rename the template to `channel-dna.md` and fill it in.
-
-> **Using ChatGPT?** Same approach — create a Project, upload the same files, use the same triggers.
-
----
 
 ## Triggers
 
 | Say this | What happens |
 |----------|--------------|
-| `запусти setup` | Onboarding — fills Channel DNA |
-| `настрой linkedin` | LinkedIn DNA setup |
-| `I want to write about X` | Full pipeline runs |
-| `в телеграм` / `в linkedin` | Run specific adapter |
-| `деаишь этот текст: ...` | Deaify only |
+| `start linkedin pilot` | Run the guided pilot orchestrator |
+| `continue linkedin pilot` | Resume the guided pilot from saved status |
+| `review intelligence coverage` | Review saved coverage and research reports |
+| `setup linkedin` | Run setup bootstrap for LinkedIn DNA |
+| `run intelligence` | Build and save discovered sources, evidence log, intelligence snapshot, and quality reports |
+| `refresh intelligence` | Refresh and save discovery artifacts and snapshot |
+| `linkedin strategy` | Build strategy pack, content plan, and image briefs |
+| `refresh linkedin strategy` | Recompute strategy deltas from refreshed intelligence |
+| `I want to write about X` | Run the content pipeline from an idea |
+| `write from strategy brief` | Run the content pipeline from a saved brief |
+| `linkedin visual` | Build LinkedIn visual artifacts from references and an approved post |
+| `в телеграм` / `в linkedin` | Run the relevant content adapter |
+| `деаишь этот текст: ...` | Run de-AI-fy only |
+| `publish` | Route to the publish module |
 
----
+## File Structure
 
-## Publishing to Telegram
-
-Setup `config/config.yaml` (copy from `config/config.example.yaml`):
-
-```yaml
-telegram:
-  staging:
-    bot_token: YOUR_BOT_TOKEN
-    channel_id: YOUR_STAGING_CHANNEL_ID
-  production:
-    bot_token: YOUR_BOT_TOKEN
-    channel_id: YOUR_PRODUCTION_CHANNEL_ID
-```
-
-Then publish:
-```bash
-# Staging
-python3 publish.py --env staging --file output/posts/YYYY-MM-DD-slug.md
-
-# Production
-python3 publish.py --env production --file output/posts/YYYY-MM-DD-slug.md
-```
-
----
-
-## File structure
-
-```
-├── CLAUDE.md                    # Entry point — triggers and instructions
-├── channel-dna.template.md      # Template → copy to channel-dna.md and fill in
-├── channel-dna.md               # Your channel DNA (gitignored — stays local)
-├── channel-dna-linkedin.md      # LinkedIn DNA (gitignored — stays local)
-├── publish.py                   # Telegram publishing (staging/production)
+```text
+├── content/
+│   ├── README.md
+│   ├── accounts/              # local, gitignored
+│   ├── channel-dna.md
+│   ├── channel-dna-linkedin.md
+│   ├── channel-dna.template.md
+│   ├── writing-guide.md
+│   ├── writing-guide.template.md
+│   ├── ai-terms-ru.md
+│   ├── templates/
+│   └── workflows/
+├── orchestrator/
+│   ├── README.md
+│   ├── accounts/              # local, gitignored
+│   ├── templates/
+│   └── workflows/
+├── intelligence/
+│   ├── README.md
+│   ├── accounts/              # local, gitignored
+│   ├── templates/
+│   └── workflows/
+├── strategy/
+│   ├── README.md
+│   ├── accounts/              # local, gitignored
+│   ├── templates/
+│   └── workflows/
+├── publish/
+│   ├── README.md
+│   ├── publish.py
+│   ├── publish_linkedin.py
+│   └── workflows/
+├── setup/
+│   ├── README.md
+│   └── bootstrap.md
 ├── config/
-│   ├── config.example.yaml      # Config template
-│   └── config.yaml              # Your tokens (gitignored — stays local)
-├── output/
-│   └── posts/                   # Ready drafts (gitignored — stays local)
-└── rules/
-    ├── setup.md                 # Onboarding flow
-    ├── core-pipeline.md         # Main pipeline
-    ├── writing-guide.md         # Your voice and style (gitignored — stays local)
-    ├── fact-check.md            # Fact verification rules
-    ├── deaify-text.md           # 4 critics + anti-AI rules
-    └── adapters/
-        ├── telegram.md          # Telegram: HTML, RU, ≤1500 chars
-        ├── linkedin.md          # LinkedIn: plain text, EN, 600–1200 chars
-        └── threads.md           # Threads: plain text, ≤500 chars
 ```
 
-**Personal files stay local.** The `.gitignore` excludes `channel-dna.md`, `writing-guide.md`, `config.yaml`, and all posts. Fork the repo → your DNA and drafts never leave your machine.
+## Local Artifact Policy
 
----
+- `content/channel-dna*.md`, `content/writing-guide.md`, and `content/accounts/*` are local and gitignored.
+- `intelligence/accounts/*`, `strategy/accounts/*`, and `orchestrator/accounts/*` are local and gitignored.
+- Tracked files are templates, workflows, docs, and tests.
+- These local account workspaces are also how the system persists progress between sessions on the same machine. The main resume file for the guided flow is `orchestrator/accounts/<account-slug>/pilot-status.yaml`.
 
-## Status
+## No-Claude fallback
 
-| Component | Status |
-|-----------|--------|
-| Telegram pipeline | ✅ Working |
-| LinkedIn DNA + adapter | ✅ Working |
-| Telegram publishing | ✅ Staging + Production |
-| Onboarding (main channel) | ✅ Working |
-| Platform Setup (LinkedIn, Threads) | ✅ Working |
-| Threads adapter | 🔧 Template ready, API later |
-| LinkedIn auto-publish | 📋 Roadmap |
-| Analytics layer | 📋 Roadmap |
-
----
-
-## Roadmap
-
-**Threads API** — Meta Developer App, `auto_publish_text`.
-
-**LinkedIn API** — OAuth 2.0, app review 1-2 weeks.
-
-**Competitor Intelligence** — when stuck for ideas: scans what others in the niche are writing, suggests 5 angles.
-
-**Analytics Layer** — logs every post, monthly report: what performs, which hooks work.
-
-**Visuals** — cover images in consistent style via DALL-E / Playwright.
-
-→ Full plan: `ROADMAP.md`
-
----
-
-## Credits
-
-- [content-factory](https://github.com/serejaris/content-factory) by Sereja Ris — original skeleton
-- [Claude Code](https://claude.ai/code) — runtime
-- [Exa MCP](https://exa.ai) — research and fact-check
-- Telegram Bot API — publishing
+If you work outside Claude Code, upload the module workflows you need instead of the old flat `rules/` folder.

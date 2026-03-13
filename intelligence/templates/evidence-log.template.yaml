@@ -1,0 +1,36 @@
+# Copy to intelligence/accounts/<account-slug>/evidence-log.yaml
+
+evidence_records:
+  - evidence_id: ev_001
+    entity_id: ent_001
+    source_family: linkedin
+    source_type: post
+    source_origin: public_web_discovery
+    acquisition_mode: exa_mcp
+    strategy_type: direct_competitor_discovery
+    url: ""
+    title: Example post
+    summary: Replace with the normalized takeaway.
+    confidence: high
+    discussion_signals:
+      comment_language: founders asking implementation questions
+      recurring_pains:
+        - uncertainty about where to start
+        - lack of internal AI operator
+
+  - evidence_id: ev_002
+    entity_id: ent_002
+    source_family: reddit
+    source_type: discussion
+    source_origin: public_web_discovery
+    acquisition_mode: web_search
+    strategy_type: audience_pain_discovery
+    url: ""
+    title: Example thread
+    summary: Replace with the buyer-language pattern.
+    confidence: medium
+    discussion_signals:
+      comment_language: repeated concern about ROI and workflow fit
+      recurring_pains:
+        - no clear AI roadmap
+        - tool fatigue

@@ -1,0 +1,69 @@
+# Copy to intelligence/accounts/<account-slug>/intelligence-snapshot.yaml
+
+stable_snapshot_id: intel-snapshot-YYYYMMDD
+account_slug: your-account-slug
+snapshot_date: YYYY-MM-DD
+readiness_status: warning_needs_enrichment
+recommendation: needs_enrichment
+
+direct_competitor_discovery:
+  source_families:
+    - linkedin
+    - websites/blogs
+  entity_ids:
+    - ent_001
+
+adjacent_analog_discovery:
+  source_families:
+    - linkedin
+    - blogs
+  entity_ids:
+    - ent_010
+
+audience_pain_discovery:
+  source_families:
+    - reddit
+    - comments/community_signals
+  entity_ids:
+    - ent_002
+
+winning_content_discovery:
+  source_families:
+    - linkedin
+    - websites/blogs
+  entity_ids:
+    - ent_020
+
+competitor_universe:
+  - competitor_id: comp_001
+    entity_id: ent_001
+    relevance_reason: Direct competitor with strong LinkedIn proof content
+    confidence: high
+    evidence_ids:
+      - ev_001
+
+pattern_library:
+  hook_types:
+    - then_now_contrast
+    - founder_confession
+  body_structures:
+    - story_to_insight
+    - teardown_to_framework
+  cta_styles:
+    - soft_question
+    - observation_close
+  topic_clusters:
+    - ai adoption mistakes
+    - founder operating systems
+  discussion_language:
+    - where do I even start
+    - how do I get ROI from AI
+
+fallback_notes:
+  - Direct competitor set was weak; adjacent analogs were expanded.
+
+upstream_artifacts:
+  discovered_sources_path: intelligence/accounts/<account-slug>/discovered-sources.yaml
+  evidence_log_path: intelligence/accounts/<account-slug>/evidence-log.yaml
+  coverage_report_path: intelligence/accounts/<account-slug>/coverage-report.yaml
+  research_report_path: intelligence/accounts/<account-slug>/research-report.md

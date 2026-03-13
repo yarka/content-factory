@@ -1,0 +1,66 @@
+# Copy to intelligence/accounts/<account-slug>/coverage-report.yaml
+
+run_id: intel-coverage-YYYYMMDD-01
+account_slug: your-account-slug
+status: warning_needs_enrichment
+recommendation: needs_enrichment
+
+entity_count: 12
+evidence_count: 25
+
+coverage_by_strategy:
+  direct_competitor_discovery:
+    entity_count: 4
+    evidence_count: 6
+    status: pass
+  adjacent_analog_discovery:
+    entity_count: 4
+    evidence_count: 7
+    status: pass
+  audience_pain_discovery:
+    entity_count: 2
+    evidence_count: 8
+    status: pass
+  winning_content_discovery:
+    entity_count: 2
+    evidence_count: 8
+    status: pass
+
+coverage_by_source_family:
+  linkedin:
+    entity_count: 3
+    evidence_count: 6
+    status: weak
+  reddit:
+    entity_count: 3
+    evidence_count: 8
+    status: pass
+  websites/blogs:
+    entity_count: 5
+    evidence_count: 7
+    status: pass
+  private_market_signal:
+    entity_count: 1
+    evidence_count: 4
+    status: pass
+
+confidence_summary:
+  high: 12
+  medium: 10
+  low: 3
+  cross_source_agreement: medium
+
+gaps:
+  - Add more LinkedIn-native competitors if the goal is a final LinkedIn strategy pass.
+  - Expand direct competitor coverage if adjacent analogs dominate the evidence base.
+
+warning_status:
+  has_warning: true
+  warnings:
+    - LinkedIn-native evidence is thinner than cross-source evidence.
+
+linked_artifacts:
+  discovered_sources_path: intelligence/accounts/<account-slug>/discovered-sources.yaml
+  evidence_log_path: intelligence/accounts/<account-slug>/evidence-log.yaml
+  intelligence_snapshot_path: intelligence/accounts/<account-slug>/intelligence-snapshot.yaml
+  research_report_path: intelligence/accounts/<account-slug>/research-report.md

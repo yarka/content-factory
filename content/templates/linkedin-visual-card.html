@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LinkedIn Visual Card</title>
+    <style>
+      :root {
+        --bg: #f5efe6;
+        --panel: #fffaf2;
+        --text: #111111;
+        --muted: #5c564e;
+        --accent: #d88f3d;
+        --border: #d8cfc2;
+        --headline-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        --body-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        width: 1200px;
+        height: 1200px;
+        background:
+          radial-gradient(circle at top left, rgba(216, 143, 61, 0.12), transparent 32%),
+          linear-gradient(180deg, var(--bg), #efe6d9 100%);
+        color: var(--text);
+        font-family: var(--body-font);
+      }
+
+      .frame {
+        width: 100%;
+        height: 100%;
+        padding: 84px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .kicker {
+        font-size: 24px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .card {
+        background: rgba(255, 250, 242, 0.78);
+        border: 1px solid var(--border);
+        border-radius: 36px;
+        padding: 56px;
+        backdrop-filter: blur(12px);
+      }
+
+      .headline {
+        margin: 0;
+        font-family: var(--headline-font);
+        font-size: 78px;
+        line-height: 0.95;
+        letter-spacing: -0.04em;
+        max-width: 900px;
+      }
+
+      .rule {
+        width: 120px;
+        height: 6px;
+        background: var(--accent);
+        border-radius: 999px;
+        margin: 36px 0 28px;
+      }
+
+      .subline {
+        margin: 0;
+        font-size: 30px;
+        line-height: 1.35;
+        color: var(--muted);
+        max-width: 860px;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        color: var(--muted);
+        font-size: 24px;
+      }
+
+      .signature {
+        font-weight: 600;
+        color: var(--text);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <div class="kicker">{{KICKER}}</div>
+      <div class="card">
+        <h1 class="headline">{{HEADLINE}}</h1>
+        <div class="rule"></div>
+        <p class="subline">{{SUBLINE}}</p>
+      </div>
+      <div class="footer">
+        <div class="signature">{{SIGNATURE}}</div>
+        <div>{{FOOTER_NOTE}}</div>
+      </div>
+    </div>
+  </body>
+</html>
